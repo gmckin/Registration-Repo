@@ -16,6 +16,7 @@ namespace RegistrationApp.DataAccess
 
     public bool AddEnrollment(Enrollment enrollment)
     {
+
       db.Enrollments.Add(enrollment);
       return db.SaveChanges() > 0;
     }
@@ -48,7 +49,7 @@ namespace RegistrationApp.DataAccess
 
     public bool Enroll()
     {
-      return db.sp_CourseRegistration(5, 9, TimeSpan.Parse("09:00"), "PE105") > 0;
+      return db.sp_CourseRegistration(5, 4, TimeSpan.Parse("10:00"), "9056") > 0;
     }
   }
 }

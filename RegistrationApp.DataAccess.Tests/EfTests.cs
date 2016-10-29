@@ -83,5 +83,15 @@ namespace RegistrationApp.DataAccess.Tests
       
       Assert.True(actual);
     }
+    [Fact]
+    public void Test_Enrollment_sp()
+    {
+      var data = new EfData();
+      var expected = new Enrollment() { CourseID = 4, StudentID = 5, CourseNumber = 9056, StartTime = TimeSpan.Parse("10:00") };
+      
+      var actual = data.Enroll();
+
+      Assert.True(actual);
+    }
   }
 }
