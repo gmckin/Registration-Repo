@@ -45,5 +45,10 @@ namespace RegistrationApp.DataAccess
       var studentenrollment = db.Enrollments.Include(e => e.Course).Include(e => e.Student).ToList();
       return studentenrollment;
     }
+
+    public bool Enroll()
+    {
+      return db.sp_CourseRegistration(5, 9, TimeSpan.Parse("09:00"), "PE105") > 0;
+    }
   }
 }
