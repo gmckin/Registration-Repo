@@ -1,0 +1,665 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RegistrationDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="BuildingID" />
+          </Key>
+          <Property Name="BuildingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuildingName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Department" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassRoom">
+          <Key>
+            <PropertyRef Name="ClassRoomID" />
+          </Key>
+          <Property Name="ClassRoomID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="BuildingID" Type="int" Nullable="false" />
+          <Property Name="RoomID" Type="int" Nullable="false" />
+          <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseNumber" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="EndTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="ClassDates" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Credits" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CourseProfessor">
+          <Key>
+            <PropertyRef Name="CourseProfessorID" />
+          </Key>
+          <Property Name="CourseProfessorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="ProfessorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Enrollment">
+          <Key>
+            <PropertyRef Name="EnrollmentID" />
+          </Key>
+          <Property Name="EnrollmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="CourseNumber" Type="int" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Professor">
+          <Key>
+            <PropertyRef Name="ProfessorID" />
+          </Key>
+          <Property Name="ProfessorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomID" />
+          </Key>
+          <Property Name="RoomID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoomNum" Type="int" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="Major" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RegistrationDB.Registration.vw_CourseLocations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_CourseLocations">
+          <Key>
+            <PropertyRef Name="BuildingName" />
+            <PropertyRef Name="RoomNum" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="StartTime" />
+          </Key>
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="BuildingName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RoomNum" Type="int" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vw_StudentCourses">
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="StartTime" Type="time" Precision="7" />
+          <Property Name="EndTime" Type="time" Precision="7" />
+          <Property Name="ClassDates" Type="nvarchar(max)" />
+          <Property Name="BuildingName" Type="nvarchar(max)" />
+          <Property Name="RoomNum" Type="int" />
+          <Property Name="Capacity" Type="int" />
+          <Property Name="Professor" Type="nvarchar(max)" />
+        </EntityType>-->
+        <Association Name="FK_Registration_Building_Registration_Building_BuildingID">
+          <End Role="Building" Type="Self.Building" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClassRoom" Type="Self.ClassRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingID" />
+            </Principal>
+            <Dependent Role="ClassRoom">
+              <PropertyRef Name="BuildingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_ClassRoom_Registrationo_Course_CourseID">
+          <End Role="Course" Type="Self.Course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClassRoom" Type="Self.ClassRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="ClassRoom">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_CourseProfessor_Registration_CourseProfessor_ProfessorID">
+          <End Role="Professor" Type="Self.Professor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CourseProfessor" Type="Self.CourseProfessor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Professor">
+              <PropertyRef Name="ProfessorID" />
+            </Principal>
+            <Dependent Role="CourseProfessor">
+              <PropertyRef Name="ProfessorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_CourseProfessor_Registrationo_Course_CourseID">
+          <End Role="Course" Type="Self.Course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CourseProfessor" Type="Self.CourseProfessor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CourseProfessor">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Enrollment_Registration_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="Enrollment">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Enrollment_Registrationo_Course_CourseID">
+          <End Role="Course" Type="Self.Course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="Enrollment">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Room_Registration_Room_RoomID">
+          <End Role="Room" Type="Self.Room" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClassRoom" Type="Self.ClassRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="ClassRoom">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_GetCourseID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Registration" ReturnType="int">
+          <Parameter Name="cname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="fn_GetStudentID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="Registration" ReturnType="int">
+          <Parameter Name="fname" Type="nvarchar" Mode="In" />
+          <Parameter Name="lname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_CourseRegistration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Registration">
+          <Parameter Name="studentid" Type="int" Mode="In" />
+          <Parameter Name="courseid" Type="int" Mode="In" />
+          <Parameter Name="starttime" Type="time" Mode="In" />
+          <Parameter Name="coursenumber" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Registration">
+          <Parameter Name="crn" Type="int" Mode="In" />
+          <Parameter Name="title" Type="nvarchar" Mode="In" />
+          <Parameter Name="starttime" Type="nvarchar" Mode="In" />
+          <Parameter Name="endtime" Type="nvarchar" Mode="In" />
+          <Parameter Name="startdate" Type="nvarchar" Mode="In" />
+          <Parameter Name="enddate" Type="nvarchar" Mode="In" />
+          <Parameter Name="classdates" Type="nvarchar" Mode="In" />
+          <Parameter Name="credits" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="RegistrationDBModelStoreContainer">
+          <EntitySet Name="Building" EntityType="Self.Building" Schema="Registration" store:Type="Tables" />
+          <EntitySet Name="ClassRoom" EntityType="Self.ClassRoom" Schema="Registration" store:Type="Tables" />
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="Registration" store:Type="Tables" />
+          <EntitySet Name="CourseProfessor" EntityType="Self.CourseProfessor" Schema="Registration" store:Type="Tables" />
+          <EntitySet Name="Enrollment" EntityType="Self.Enrollment" Schema="Registration" store:Type="Tables" />
+          <EntitySet Name="Professor" EntityType="Self.Professor" Schema="Registration" store:Type="Tables" />
+          <EntitySet Name="Room" EntityType="Self.Room" Schema="Registration" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="Registration" store:Type="Tables" />
+          <EntitySet Name="vw_CourseLocations" EntityType="Self.vw_CourseLocations" store:Type="Views" store:Schema="Registration">
+            <DefiningQuery>SELECT 
+    [vw_CourseLocations].[Title] AS [Title], 
+    [vw_CourseLocations].[BuildingName] AS [BuildingName], 
+    [vw_CourseLocations].[RoomNum] AS [RoomNum], 
+    [vw_CourseLocations].[Capacity] AS [Capacity], 
+    [vw_CourseLocations].[StartTime] AS [StartTime]
+    FROM [Registration].[vw_CourseLocations] AS [vw_CourseLocations]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Registration_Building_Registration_Building_BuildingID" Association="Self.FK_Registration_Building_Registration_Building_BuildingID">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="ClassRoom" EntitySet="ClassRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_ClassRoom_Registrationo_Course_CourseID" Association="Self.FK_Registration_ClassRoom_Registrationo_Course_CourseID">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="ClassRoom" EntitySet="ClassRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_CourseProfessor_Registration_CourseProfessor_ProfessorID" Association="Self.FK_Registration_CourseProfessor_Registration_CourseProfessor_ProfessorID">
+            <End Role="Professor" EntitySet="Professor" />
+            <End Role="CourseProfessor" EntitySet="CourseProfessor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_CourseProfessor_Registrationo_Course_CourseID" Association="Self.FK_Registration_CourseProfessor_Registrationo_Course_CourseID">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CourseProfessor" EntitySet="CourseProfessor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Enrollment_Registration_Student_StudentID" Association="Self.FK_Registration_Enrollment_Registration_Student_StudentID">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Enrollment" EntitySet="Enrollment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Enrollment_Registrationo_Course_CourseID" Association="Self.FK_Registration_Enrollment_Registrationo_Course_CourseID">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Enrollment" EntitySet="Enrollment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Room_Registration_Room_RoomID" Association="Self.FK_Registration_Room_Registration_Room_RoomID">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="ClassRoom" EntitySet="ClassRoom" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RegistrationDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="BuildingID" />
+          </Key>
+          <Property Name="BuildingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuildingName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ClassRooms" Relationship="Self.FK_Registration_Building_Registration_Building_BuildingID" FromRole="Building" ToRole="ClassRoom" />
+        </EntityType>
+        <EntityType Name="ClassRoom">
+          <Key>
+            <PropertyRef Name="ClassRoomID" />
+          </Key>
+          <Property Name="ClassRoomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="BuildingID" Type="Int32" Nullable="false" />
+          <Property Name="RoomID" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Building" Relationship="Self.FK_Registration_Building_Registration_Building_BuildingID" FromRole="ClassRoom" ToRole="Building" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_Registration_ClassRoom_Registrationo_Course_CourseID" FromRole="ClassRoom" ToRole="Course" />
+          <NavigationProperty Name="Room" Relationship="Self.FK_Registration_Room_Registration_Room_RoomID" FromRole="ClassRoom" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseNumber" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ClassDates" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Credits" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ClassRooms" Relationship="Self.FK_Registration_ClassRoom_Registrationo_Course_CourseID" FromRole="Course" ToRole="ClassRoom" />
+          <NavigationProperty Name="CourseProfessors" Relationship="Self.FK_Registration_CourseProfessor_Registrationo_Course_CourseID" FromRole="Course" ToRole="CourseProfessor" />
+          <NavigationProperty Name="Enrollments" Relationship="Self.FK_Registration_Enrollment_Registrationo_Course_CourseID" FromRole="Course" ToRole="Enrollment" />
+        </EntityType>
+        <EntityType Name="CourseProfessor">
+          <Key>
+            <PropertyRef Name="CourseProfessorID" />
+          </Key>
+          <Property Name="CourseProfessorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="ProfessorID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_Registration_CourseProfessor_Registrationo_Course_CourseID" FromRole="CourseProfessor" ToRole="Course" />
+          <NavigationProperty Name="Professor" Relationship="Self.FK_Registration_CourseProfessor_Registration_CourseProfessor_ProfessorID" FromRole="CourseProfessor" ToRole="Professor" />
+        </EntityType>
+        <EntityType Name="Enrollment">
+          <Key>
+            <PropertyRef Name="EnrollmentID" />
+          </Key>
+          <Property Name="EnrollmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="CourseNumber" Type="Int32" Nullable="false" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_Registration_Enrollment_Registrationo_Course_CourseID" FromRole="Enrollment" ToRole="Course" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Registration_Enrollment_Registration_Student_StudentID" FromRole="Enrollment" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Professor">
+          <Key>
+            <PropertyRef Name="ProfessorID" />
+          </Key>
+          <Property Name="ProfessorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CourseProfessors" Relationship="Self.FK_Registration_CourseProfessor_Registration_CourseProfessor_ProfessorID" FromRole="Professor" ToRole="CourseProfessor" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomID" />
+          </Key>
+          <Property Name="RoomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoomNum" Type="Int32" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ClassRooms" Relationship="Self.FK_Registration_Room_Registration_Room_RoomID" FromRole="Room" ToRole="ClassRoom" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Major" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Enrollments" Relationship="Self.FK_Registration_Enrollment_Registration_Student_StudentID" FromRole="Student" ToRole="Enrollment" />
+        </EntityType>
+        <EntityType Name="vw_CourseLocations">
+          <Key>
+            <PropertyRef Name="BuildingName" />
+            <PropertyRef Name="RoomNum" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="StartTime" />
+          </Key>
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BuildingName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoomNum" Type="Int32" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+        </EntityType>
+        <Association Name="FK_Registration_Building_Registration_Building_BuildingID">
+          <End Role="Building" Type="Self.Building" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClassRoom" Type="Self.ClassRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingID" />
+            </Principal>
+            <Dependent Role="ClassRoom">
+              <PropertyRef Name="BuildingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_ClassRoom_Registrationo_Course_CourseID">
+          <End Role="Course" Type="Self.Course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClassRoom" Type="Self.ClassRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="ClassRoom">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Room_Registration_Room_RoomID">
+          <End Role="Room" Type="Self.Room" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClassRoom" Type="Self.ClassRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="RoomID" />
+            </Principal>
+            <Dependent Role="ClassRoom">
+              <PropertyRef Name="RoomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_CourseProfessor_Registrationo_Course_CourseID">
+          <End Role="Course" Type="Self.Course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CourseProfessor" Type="Self.CourseProfessor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="CourseProfessor">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Enrollment_Registrationo_Course_CourseID">
+          <End Role="Course" Type="Self.Course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="Enrollment">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_CourseProfessor_Registration_CourseProfessor_ProfessorID">
+          <End Role="Professor" Type="Self.Professor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CourseProfessor" Type="Self.CourseProfessor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Professor">
+              <PropertyRef Name="ProfessorID" />
+            </Principal>
+            <Dependent Role="CourseProfessor">
+              <PropertyRef Name="ProfessorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Enrollment_Registration_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Enrollment" Type="Self.Enrollment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="Enrollment">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RegistrationDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Buildings" EntityType="Self.Building" />
+          <EntitySet Name="ClassRooms" EntityType="Self.ClassRoom" />
+          <EntitySet Name="Courses" EntityType="Self.Course" />
+          <EntitySet Name="CourseProfessors" EntityType="Self.CourseProfessor" />
+          <EntitySet Name="Enrollments" EntityType="Self.Enrollment" />
+          <EntitySet Name="Professors" EntityType="Self.Professor" />
+          <EntitySet Name="Rooms" EntityType="Self.Room" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="vw_CourseLocations" EntityType="Self.vw_CourseLocations" />
+          <AssociationSet Name="FK_Registration_Building_Registration_Building_BuildingID" Association="Self.FK_Registration_Building_Registration_Building_BuildingID">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="ClassRoom" EntitySet="ClassRooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_ClassRoom_Registrationo_Course_CourseID" Association="Self.FK_Registration_ClassRoom_Registrationo_Course_CourseID">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="ClassRoom" EntitySet="ClassRooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Room_Registration_Room_RoomID" Association="Self.FK_Registration_Room_Registration_Room_RoomID">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="ClassRoom" EntitySet="ClassRooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_CourseProfessor_Registrationo_Course_CourseID" Association="Self.FK_Registration_CourseProfessor_Registrationo_Course_CourseID">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="CourseProfessor" EntitySet="CourseProfessors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Enrollment_Registrationo_Course_CourseID" Association="Self.FK_Registration_Enrollment_Registrationo_Course_CourseID">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Enrollment" EntitySet="Enrollments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_CourseProfessor_Registration_CourseProfessor_ProfessorID" Association="Self.FK_Registration_CourseProfessor_Registration_CourseProfessor_ProfessorID">
+            <End Role="Professor" EntitySet="Professors" />
+            <End Role="CourseProfessor" EntitySet="CourseProfessors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Enrollment_Registration_Student_StudentID" Association="Self.FK_Registration_Enrollment_Registration_Student_StudentID">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Enrollment" EntitySet="Enrollments" />
+          </AssociationSet>
+          <FunctionImport Name="sp_CourseRegistration">
+            <Parameter Name="studentid" Mode="In" Type="Int32" />
+            <Parameter Name="courseid" Mode="In" Type="Int32" />
+            <Parameter Name="starttime" Mode="In" Type="Time" />
+            <Parameter Name="coursenumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertCourse">
+            <Parameter Name="crn" Mode="In" Type="Int32" />
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="starttime" Mode="In" Type="String" />
+            <Parameter Name="endtime" Mode="In" Type="String" />
+            <Parameter Name="startdate" Mode="In" Type="String" />
+            <Parameter Name="enddate" Mode="In" Type="String" />
+            <Parameter Name="classdates" Mode="In" Type="String" />
+            <Parameter Name="credits" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RegistrationDBModelStoreContainer" CdmEntityContainer="RegistrationDBEntities">
+          <EntitySetMapping Name="Buildings">
+            <EntityTypeMapping TypeName="RegistrationDBModel.Building">
+              <MappingFragment StoreEntitySet="Building">
+                <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
+                <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassRooms">
+            <EntityTypeMapping TypeName="RegistrationDBModel.ClassRoom">
+              <MappingFragment StoreEntitySet="ClassRoom">
+                <ScalarProperty Name="ClassRoomID" ColumnName="ClassRoomID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="RegistrationDBModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="CourseNumber" ColumnName="CourseNumber" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="ClassDates" ColumnName="ClassDates" />
+                <ScalarProperty Name="Credits" ColumnName="Credits" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseProfessors">
+            <EntityTypeMapping TypeName="RegistrationDBModel.CourseProfessor">
+              <MappingFragment StoreEntitySet="CourseProfessor">
+                <ScalarProperty Name="CourseProfessorID" ColumnName="CourseProfessorID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="ProfessorID" ColumnName="ProfessorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enrollments">
+            <EntityTypeMapping TypeName="RegistrationDBModel.Enrollment">
+              <MappingFragment StoreEntitySet="Enrollment">
+                <ScalarProperty Name="EnrollmentID" ColumnName="EnrollmentID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="CourseNumber" ColumnName="CourseNumber" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Professors">
+            <EntityTypeMapping TypeName="RegistrationDBModel.Professor">
+              <MappingFragment StoreEntitySet="Professor">
+                <ScalarProperty Name="ProfessorID" ColumnName="ProfessorID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="RegistrationDBModel.Room">
+              <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="RegistrationDBModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Major" ColumnName="Major" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_CourseLocations">
+            <EntityTypeMapping TypeName="RegistrationDBModel.vw_CourseLocations">
+              <MappingFragment StoreEntitySet="vw_CourseLocations">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
+                <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_CourseRegistration" FunctionName="RegistrationDBModel.Store.sp_CourseRegistration" />
+          <FunctionImportMapping FunctionImportName="sp_InsertCourse" FunctionName="RegistrationDBModel.Store.sp_InsertCourse" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
