@@ -27,8 +27,9 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
 
-    public bool DeleteRoom(Room room)
+    public bool DeleteRoom(Room room, int? id)
     {
+      room = db.Rooms.Where(x => x.RoomID == id).FirstOrDefault();
       db.Rooms.Remove(room);
       return db.SaveChanges() > 0;
     }

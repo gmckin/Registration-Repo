@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using Xunit;
 using System.Data;
 using System.Globalization;
+using System.Data.Entity;
 
 namespace RegistrationApp.DataAccess.Tests
 {
   public class EfTests
   {
+    private RegistrationDBEntities db = new RegistrationDBEntities();
     [Fact]
     public void Test_GetStudent()
     {
@@ -29,16 +31,102 @@ namespace RegistrationApp.DataAccess.Tests
 
     //}
 
-    //[Fact]
-    //public void Test_DeleteStudent()
-    //{
-    //  //var data = new EfData();
-    //  //var expected = data.GetStudent();
-    //  //var actual = data.DeleteStudent(expected);
+    [Fact]
+    public void Test_DeleteStudent()
+    {
+      var id = 9;
+      var expected = db.Students.Where(x => x.StudentID == id).FirstOrDefault();
+      var data = new EfData();
+      
+      var actual = data.DeleteStudent(expected, id);
 
-    //  //Assert.True(actual);
-    //}
+      Assert.True(actual);
+    }
 
+
+    [Fact]
+    public void Test_DeleteRoom()
+    {
+      var id = 5;
+      var expected = db.Rooms.Where(x => x.RoomID == id).FirstOrDefault();
+      var data = new EfData();
+
+      var actual = data.DeleteRoom(expected, id);
+
+      Assert.True(actual);
+    }
+
+    [Fact]
+    public void Test_DeleteProfessor()
+    {
+      var id = 3;
+      var expected = db.Professors.Where(x => x.ProfessorID == id).FirstOrDefault();
+      var data = new EfData();
+
+      var actual = data.DeleteProfessor(expected, id);
+
+      Assert.True(actual);
+    }
+
+    [Fact]
+    public void Test_DeleteEnrollment()
+    {
+      var id = 1;
+      var expected = db.Enrollments.Where(x => x.EnrollmentID == id).FirstOrDefault();
+      var data = new EfData();
+
+      var actual = data.DeleteEnrollment(expected, id);
+
+      Assert.True(actual);
+    }
+
+    [Fact]
+    public void Test_DeleteCourse()
+    {
+      var id = 9;
+      var expected = db.Courses.Where(x => x.CourseID == id).FirstOrDefault();
+      var data = new EfData();
+
+      var actual = data.DeleteCourse(expected, id);
+
+      Assert.True(actual);
+    }
+
+    [Fact]
+    public void Test_DeleteCourseProfessor()
+    {
+      var id = 5;
+      var expected = db.CourseProfessors.Where(x => x.CourseProfessorID == id).FirstOrDefault();
+      var data = new EfData();
+
+      var actual = data.DeleteCourseProfessor(expected, id);
+
+      Assert.True(actual);
+    }
+
+    [Fact]
+    public void Test_DeleteClassRoom()
+    {
+      var id = 14;
+      var expected = db.ClassRooms.Where(x => x.ClassRoomID == id).FirstOrDefault();
+      var data = new EfData();
+
+      var actual = data.DeleteClassRoom(expected, id);
+
+      Assert.True(actual);
+    }
+
+    [Fact]
+    public void Test_DeleteBuilding()
+    {
+      var id = 5;
+      var expected = db.Buildings.Where(x => x.BuildingID == id).FirstOrDefault();
+      var data = new EfData();
+
+      var actual = data.DeleteBuilding(expected, id);
+
+      Assert.True(actual);
+    }
 
 
     //[Fact]
@@ -67,12 +155,13 @@ namespace RegistrationApp.DataAccess.Tests
     public void Test_InsertCourse()
     {
       var data = new EfData();
-      var expected = new Course() { CourseNumber = 1111, Title = "PE105", StartTime = TimeSpan.Parse("09:00"), EndTime = TimeSpan.Parse("10:00"), StartDate = DateTime.Parse("10-24-2016"), EndDate = DateTime.Parse("12-23-2016"), ClassDates = "MTWRF"};
+      var expected = new Course() { CourseNumber = 1112, Title = "PE106", StartTime = TimeSpan.Parse("10:00"), EndTime = TimeSpan.Parse("11:00"), StartDate = DateTime.Parse("10-24-2016"), EndDate = DateTime.Parse("12-23-2016"), ClassDates = "MTWRF"};
 
     var actual = data.UpdateCourse(expected, System.Data.Entity.EntityState.Added);
 
     Assert.True(actual);
     }
+
     [Fact]
     public void Test_Enrollment()
     {
@@ -83,6 +172,7 @@ namespace RegistrationApp.DataAccess.Tests
       
       Assert.True(actual);
     }
+
     [Fact]
     public void Test_Enrollment_sp()
     {
@@ -93,5 +183,72 @@ namespace RegistrationApp.DataAccess.Tests
 
       Assert.True(actual);
     }
+
+    [Fact]
+    public void Test_InsertBuilding()
+    {
+      var data = new EfData();
+      var expected = new Building() { BuildingName = "Test Building", Department = "Test Department" };
+
+      var actual = data.UpdateBuilding(expected, System.Data.Entity.EntityState.Added);
+
+      Assert.True(actual);
+    }
+
+    [Fact]
+    public void Test_InsertRoom()
+    {
+      var data = new EfData();
+      var expected = new Room() { RoomNum = 127, Capacity = 25 };
+
+      var actual = data.UpdateRoom(expected, System.Data.Entity.EntityState.Added);
+
+      Assert.True(actual);
+    }
+
+    [Fact]
+    public void Test_CreateClassRoom()
+    {
+      var data = new EfData();
+      var expected = new ClassRoom() { CourseID = 2, BuildingID = 2, RoomID = 3, StartTime = TimeSpan.Parse("10:00")};
+
+      var actual = data.UpdateClassRoom(expected, System.Data.Entity.EntityState.Added);
+
+      Assert.True(actual);
+    }
+
+    [Fact]
+    public void Test_InsertProfessor()
+    {
+      var data = new EfData();
+      var expected = new Professor() { LastName = "Hopper", FirstName = "Grace"};
+
+      var actual = data.UpdateProfessor(expected, System.Data.Entity.EntityState.Added);
+
+      Assert.True(actual);
+    }
+
+    [Fact]
+    public void Test_CreateCourseProfessor()
+    {
+      var data = new EfData();
+      var expected = new CourseProfessor() { CourseID = 9, ProfessorID = 1 };
+
+      var actual = data.UpdateCourseProfessor(expected, System.Data.Entity.EntityState.Added);
+
+      Assert.True(actual);
+    }
+
+
+    //[Fact]
+    //public void Test_DeleteCourseProfessor()
+    //{
+    //  var data = new EfData();
+    //  var expected = new CourseProfessor() { CourseProfessorID = 5 };
+
+    //  var actual = data.DeleteCourseProfessor(expected);
+
+    //  Assert.False(actual);
+    //}
   }
 }

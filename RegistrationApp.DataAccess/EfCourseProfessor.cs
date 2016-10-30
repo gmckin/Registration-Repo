@@ -14,6 +14,12 @@ namespace RegistrationApp.DataAccess
       return db.CourseProfessors.ToList();
     }
 
+    //public Task<CourseProfessor> GetCourseProfessorid(int id)
+    //{
+    //  var profid = db.CourseProfessors.Select(p => p.CourseProfessorID.Equals(id));
+    //  return profid;
+    //}
+
     public bool AddCourseProfessor(CourseProfessor courseprofessor)
     {
       db.CourseProfessors.Add(courseprofessor);
@@ -27,9 +33,11 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
 
-    public bool DeleteCourseProfessor(CourseProfessor courseprofessor)
+    public bool DeleteCourseProfessor(CourseProfessor courseprofessor, int? id)
     {
-      db.CourseProfessors.Find(courseprofessor);
+      courseprofessor = db.CourseProfessors.Where(x => x.CourseProfessorID == id).FirstOrDefault();
+      //var entry = db.Entry<CourseProfessor>(courseprofessor);
+      //db.Entry(entry).State = EntityState.Deleted;
       db.CourseProfessors.Remove(courseprofessor);
       return db.SaveChanges() > 0;
     }

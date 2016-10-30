@@ -27,8 +27,10 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
 
-    public bool DeleteStudent(Student student)
+    public bool DeleteStudent(Student student, int? id)
     {
+      
+      student = db.Students.Where(x => x.StudentID == id).FirstOrDefault(); ;
       db.Students.Remove(student);
       return db.SaveChanges() > 0;
     }

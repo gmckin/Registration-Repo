@@ -27,8 +27,9 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
 
-    public bool DeleteCourse(Course course)
+    public bool DeleteCourse(Course course, int? id)
     {
+      course = db.Courses.Where(x => x.CourseID == id).FirstOrDefault();       
       db.Courses.Remove(course);
       return db.SaveChanges() > 0;
     }

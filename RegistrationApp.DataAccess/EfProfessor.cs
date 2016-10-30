@@ -27,8 +27,9 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
 
-    public bool DeleteProfessor(Professor professor)
+    public bool DeleteProfessor(Professor professor, int? id)
     {
+      professor = db.Professors.Where(x => x.ProfessorID == id).FirstOrDefault();
       db.Professors.Remove(professor);
       return db.SaveChanges() > 0;
     }

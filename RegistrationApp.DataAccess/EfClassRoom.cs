@@ -27,12 +27,12 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
 
-    public bool DeleteClassRoom(ClassRoom classRoom)
+    public bool DeleteClassRoom(ClassRoom classRoom, int? id)
     {
       //db.ClassRooms.Remove(classRoom);
       //return db.SaveChanges() > 0;
-
-      db.ClassRooms.Find(classRoom);
+      classRoom = db.ClassRooms.Where(x => x.ClassRoomID == id).FirstOrDefault();
+     
       db.ClassRooms.Remove(classRoom);
       return db.SaveChanges() > 0;
 

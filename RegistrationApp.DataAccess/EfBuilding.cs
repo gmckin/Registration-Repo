@@ -27,8 +27,9 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
 
-    public bool DeleteBuilding(Building building)
+    public bool DeleteBuilding(Building building, int? id)
     {
+      building = db.Buildings.Where(x => x.BuildingID == id).FirstOrDefault();
       db.Buildings.Remove(building);
       return db.SaveChanges() > 0;
     }
