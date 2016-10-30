@@ -20,10 +20,9 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
 
-    public bool UpdateBuilding(Building building, EntityState state)
+    public bool UpdateBuilding(Building building)
     {
-      var entry = db.Entry<Building>(building);
-      entry.State = state;
+      
       return db.SaveChanges() > 0;
     }
 

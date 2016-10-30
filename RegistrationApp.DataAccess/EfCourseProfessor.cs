@@ -26,10 +26,22 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
 
-    public bool UpdateCourseProfessor(CourseProfessor courseprofessor, EntityState state)
+    public bool UpdateCourseProfessor(CourseProfessor courseprofessor)
     {
-      var entry = db.Entry<CourseProfessor>(courseprofessor);
-      entry.State = state;
+      var result = db.CourseProfessors.SingleOrDefault(x => x.CourseProfessorID == courseprofessor.CourseProfessorID);
+     
+      if(result != null)
+      {
+        if (courseprofessor.CourseProfessorID != 0)
+          result.CourseProfessorID = courseprofessor.CourseProfessorID;
+
+        if (courseprofessor.ProfessorID != 0)
+          result.ProfessorID = courseprofessor.ProfessorID;
+
+        if (courseprofessor.CourseID != 0)
+          result.CourseID = courseprofessor.CourseID;
+      }
+      
       return db.SaveChanges() > 0;
     }
 

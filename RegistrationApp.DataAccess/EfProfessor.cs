@@ -20,10 +20,21 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
 
-    public bool UpdateProfessor(Professor professor, EntityState state)
+    public bool UpdateProfessor(Professor professor)
     {
-      var entry = db.Entry<Professor>(professor);
-      entry.State = state;
+      var result = db.Professors.SingleOrDefault(x => x.ProfessorID == professor.ProfessorID);
+
+      if (result != null)
+      {
+        if (professor.ProfessorID != 0)
+          result.ProfessorID = professor.ProfessorID;
+
+        if (professor.LastName != null)
+          result.LastName = professor.LastName;
+
+        if (professor.FirstName != null)
+          result.FirstName = professor.FirstName;
+      }
       return db.SaveChanges() > 0;
     }
 

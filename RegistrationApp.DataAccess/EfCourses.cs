@@ -20,10 +20,39 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
 
-    public bool UpdateCourse(Course course, EntityState state)
+    public bool UpdateCourse(Course course)
     {
-      var entry = db.Entry<Course>(course);
-      entry.State = state;
+      var result = db.Courses.SingleOrDefault(x => x.CourseID == course.CourseID);
+
+      if (result != null)
+      {
+        if (course.CourseID != 0)
+          result.CourseID = course.CourseID;
+
+        if (course.CourseNumber != 0)
+          result.CourseNumber = course.CourseNumber;
+
+        if (course.Title != null)
+          result.Title = course.Title;
+
+        if (course.StartTime != null)
+          result.StartTime = course.StartTime;
+
+        if (course.EndTime != null)
+          result.EndTime = course.EndTime;
+
+        if (course.StartDate != null)
+          result.StartDate = course.StartDate;
+
+        if (course.EndDate != null)
+          result.EndDate = course.EndDate;
+
+        if (course.Credits != 0)
+          result.Credits = course.Credits;
+
+        if (course.ClassDates != null)
+          result.ClassDates = course.ClassDates;
+      }
       return db.SaveChanges() > 0;
     }
 

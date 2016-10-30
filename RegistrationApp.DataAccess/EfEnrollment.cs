@@ -21,10 +21,27 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
 
-    public bool UpdateEnrollment(Enrollment enrollment, EntityState state)
+    public bool UpdateEnrollment(Enrollment enrollment)
     {
-      var entry = db.Entry<Enrollment>(enrollment);
-      entry.State = state;
+      var result = db.Enrollments.SingleOrDefault(x => x.EnrollmentID == enrollment.EnrollmentID);
+
+      if (result != null)
+      {
+        if (enrollment.EnrollmentID != 0)
+          result.EnrollmentID = enrollment.EnrollmentID;
+
+        if (enrollment.CourseID != 0)
+          result.CourseID = enrollment.CourseID;
+
+        if (enrollment.StudentID != 0)
+          result.StudentID = enrollment.StudentID;
+
+        if (enrollment.CourseNumber != 0)
+          result.CourseNumber = enrollment.CourseNumber;
+
+        if (enrollment.StartTime != null)
+          result.StartTime = enrollment.StartTime;
+      }
       return db.SaveChanges() > 0;
     }
 

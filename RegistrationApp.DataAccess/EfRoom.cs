@@ -20,10 +20,21 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
 
-    public bool UpdateRoom(Room room, EntityState state)
+    public bool UpdateRoom(Room room)
     {
-      var entry = db.Entry<Room>(room);
-      entry.State = state;
+      var result = db.Rooms.SingleOrDefault(x => x.RoomID == room.RoomID);
+
+      if (result != null)
+      {
+        if (room.RoomID != 0)
+          result.RoomID = room.RoomID;
+
+        if (room.RoomNum != 0)
+          result.RoomNum = room.RoomNum;
+
+        if (room.Capacity != 0)
+          result.Capacity = room.Capacity;
+      }
       return db.SaveChanges() > 0;
     }
 

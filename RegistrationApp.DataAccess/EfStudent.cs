@@ -20,10 +20,24 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
 
-    public bool UpdateStudent(Student student, EntityState state)
+    public bool UpdateStudent(Student student)
     {
-      var entry = db.Entry<Student>(student);
-      entry.State = state;
+      var result = db.Students.SingleOrDefault(x => x.StudentID == student.StudentID);
+
+      if (result != null)
+      {
+        if (student.StudentID != 0)
+          result.StudentID = student.StudentID;
+
+        if (student.LastName != null)
+          result.LastName = student.LastName;
+
+        if (student.FirstName != null)
+          result.FirstName = student.FirstName;
+
+        if (student.Major != null)
+          result.Major = student.Major;
+      }
       return db.SaveChanges() > 0;
     }
 
