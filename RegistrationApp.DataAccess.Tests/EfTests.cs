@@ -157,7 +157,7 @@ namespace RegistrationApp.DataAccess.Tests
       var data = new EfData();
       var expected = new Course() { CourseNumber = 1112, Title = "PE106", StartTime = TimeSpan.Parse("10:00"), EndTime = TimeSpan.Parse("11:00"), StartDate = DateTime.Parse("10-24-2016"), EndDate = DateTime.Parse("12-23-2016"), ClassDates = "MTWRF"};
 
-    var actual = data.UpdateCourse(expected, System.Data.Entity.EntityState.Added);
+    var actual = data.AddCourse(expected);
 
     Assert.True(actual);
     }
@@ -166,9 +166,9 @@ namespace RegistrationApp.DataAccess.Tests
     public void Test_Enrollment()
     {
       var data = new EfData();
-      var expected = new Enrollment() { CourseID = 9, StudentID = 5, CourseNumber = 8845, StartTime = TimeSpan.Parse("09:00") };
+      var expected = new Enrollment() { CourseID = 1, StudentID = 2, CourseNumber = 8844, StartTime = TimeSpan.Parse("08:00") };
 
-      var actual = data.UpdateEnrollment(expected, System.Data.Entity.EntityState.Added);
+      var actual = data.AddEnrollment(expected);
       
       Assert.True(actual);
     }
@@ -177,7 +177,7 @@ namespace RegistrationApp.DataAccess.Tests
     public void Test_Enrollment_sp()
     {
       var data = new EfData();
-      var expected = new Enrollment() { CourseID = 4, StudentID = 5, CourseNumber = 9056, StartTime = TimeSpan.Parse("10:00") };
+      var expected = new Enrollment() { CourseID = 13, StudentID = 11, CourseNumber = 1112, StartTime = TimeSpan.Parse("10:00") };
       
       var actual = data.Enroll();
 
@@ -190,7 +190,7 @@ namespace RegistrationApp.DataAccess.Tests
       var data = new EfData();
       var expected = new Building() { BuildingName = "Test Building", Department = "Test Department" };
 
-      var actual = data.UpdateBuilding(expected, System.Data.Entity.EntityState.Added);
+      var actual = data.AddBuilding(expected);
 
       Assert.True(actual);
     }
@@ -201,7 +201,7 @@ namespace RegistrationApp.DataAccess.Tests
       var data = new EfData();
       var expected = new Room() { RoomNum = 127, Capacity = 25 };
 
-      var actual = data.UpdateRoom(expected, System.Data.Entity.EntityState.Added);
+      var actual = data.AddRoom(expected);
 
       Assert.True(actual);
     }
@@ -212,7 +212,7 @@ namespace RegistrationApp.DataAccess.Tests
       var data = new EfData();
       var expected = new ClassRoom() { CourseID = 2, BuildingID = 2, RoomID = 3, StartTime = TimeSpan.Parse("10:00")};
 
-      var actual = data.UpdateClassRoom(expected, System.Data.Entity.EntityState.Added);
+      var actual = data.AddClassRoom(expected);
 
       Assert.True(actual);
     }
@@ -223,7 +223,7 @@ namespace RegistrationApp.DataAccess.Tests
       var data = new EfData();
       var expected = new Professor() { LastName = "Hopper", FirstName = "Grace"};
 
-      var actual = data.UpdateProfessor(expected, System.Data.Entity.EntityState.Added);
+      var actual = data.AddProfessor(expected);
 
       Assert.True(actual);
     }
@@ -232,9 +232,9 @@ namespace RegistrationApp.DataAccess.Tests
     public void Test_CreateCourseProfessor()
     {
       var data = new EfData();
-      var expected = new CourseProfessor() { CourseID = 9, ProfessorID = 1 };
+      var expected = new CourseProfessor() { CourseID = 1, ProfessorID = 1 };
 
-      var actual = data.UpdateCourseProfessor(expected, System.Data.Entity.EntityState.Added);
+      var actual = data.AddCourseProfessor(expected);
 
       Assert.True(actual);
     }

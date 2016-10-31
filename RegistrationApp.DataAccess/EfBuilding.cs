@@ -22,7 +22,21 @@ namespace RegistrationApp.DataAccess
 
     public bool UpdateBuilding(Building building)
     {
-      
+      var result = db.Buildings.SingleOrDefault(x => x.BuildingID == building.BuildingID);
+
+      if (result != null)
+      {
+        if (building.BuildingID != 0)
+          result.BuildingID = building.BuildingID;
+
+        if (building.BuildingName != null)
+          result.BuildingName = building.BuildingName;
+
+        if (building.Department != null)
+          result.Department = building.Department;
+      }
+      return db.SaveChanges() > 0;
+
       return db.SaveChanges() > 0;
     }
 

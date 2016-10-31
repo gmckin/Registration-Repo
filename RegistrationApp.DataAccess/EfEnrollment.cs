@@ -57,13 +57,13 @@ namespace RegistrationApp.DataAccess
     public List<Enrollment> GetStudentEnrollments()
     {
       //var studentenrollment = db.Students.Include(Enrollment => Enrollment.Enrollments.Select(Course => Course)).ToList();
-      var studentenrollment = db.Enrollments.Include(e => e.Course).Include(e => e.Student).ToList();
-      return studentenrollment;
+      var studentenrollment = db.Enrollments.Include(e => e.Course).Include(e => e.Student);
+      return studentenrollment.ToList();
     }
 
     public bool Enroll()
     {
-      return db.sp_CourseRegistration(5, 4, TimeSpan.Parse("10:00"), "9056") > 0;
+      return db.sp_CourseRegistration(11, 13, TimeSpan.Parse("10:00"), "1112") > 0;
     }
   }
 }

@@ -91,6 +91,7 @@
     <Compile Include="EfData.cs" />
     <Compile Include="EfEnrollment.cs" />
     <Compile Include="EfProfessor.cs" />
+    <Compile Include="EfRegistrar.cs" />
     <Compile Include="EfRoom.cs" />
     <Compile Include="EfStudent.cs" />
     <Compile Include="Enrollment.cs">

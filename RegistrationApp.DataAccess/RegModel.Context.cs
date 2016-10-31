@@ -9,13 +9,14 @@
 
 namespace RegistrationApp.DataAccess
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Core.Objects;
-    using System.Linq;
-    
-    public partial class RegistrationDBEntities : DbContext
+  using System;
+  using System.Data.Entity;
+  using System.Data.Entity.Infrastructure;
+  using System.Data.Entity.Core.Objects;
+  using System.Linq;
+  using System.Collections.Generic;
+
+  public partial class RegistrationDBEntities : DbContext
     {
         public RegistrationDBEntities()
             : base("name=RegistrationDBEntities")
@@ -93,6 +94,6 @@ namespace RegistrationApp.DataAccess
                 new ObjectParameter("credits", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertCourse", crnParameter, titleParameter, starttimeParameter, endtimeParameter, startdateParameter, enddateParameter, classdatesParameter, creditsParameter);
-        }
-    }
+        }    
+  }
 }
