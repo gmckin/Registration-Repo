@@ -14,6 +14,7 @@ namespace RegistrationApp.DataAccess
     
     public partial class vw_CourseLocations
     {
+        public int CourseID { get; set; }
         public string Title { get; set; }
         public string BuildingName { get; set; }
         public int RoomNum { get; set; }

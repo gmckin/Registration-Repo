@@ -9,14 +9,13 @@
 
 namespace RegistrationApp.DataAccess
 {
-  using System;
-  using System.Data.Entity;
-  using System.Data.Entity.Infrastructure;
-  using System.Data.Entity.Core.Objects;
-  using System.Linq;
-  using System.Collections.Generic;
-
-  public partial class RegistrationDBEntities : DbContext
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
+    
+    public partial class RegistrationDBEntities : DbContext
     {
         public RegistrationDBEntities()
             : base("name=RegistrationDBEntities")
@@ -38,7 +37,7 @@ namespace RegistrationApp.DataAccess
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<vw_CourseLocations> vw_CourseLocations { get; set; }
     
-        public virtual int sp_CourseRegistration(Nullable<int> studentid, Nullable<int> courseid, Nullable<System.TimeSpan> starttime, string coursenumber)
+        public virtual int sp_CourseRegistration(Nullable<int> studentid, Nullable<int> courseid, Nullable<int> coursenumber, Nullable<System.TimeSpan> starttime)
         {
             var studentidParameter = studentid.HasValue ?
                 new ObjectParameter("studentid", studentid) :
@@ -48,18 +47,18 @@ namespace RegistrationApp.DataAccess
                 new ObjectParameter("courseid", courseid) :
                 new ObjectParameter("courseid", typeof(int));
     
+            var coursenumberParameter = coursenumber.HasValue ?
+                new ObjectParameter("coursenumber", coursenumber) :
+                new ObjectParameter("coursenumber", typeof(int));
+    
             var starttimeParameter = starttime.HasValue ?
                 new ObjectParameter("starttime", starttime) :
                 new ObjectParameter("starttime", typeof(System.TimeSpan));
     
-            var coursenumberParameter = coursenumber != null ?
-                new ObjectParameter("coursenumber", coursenumber) :
-                new ObjectParameter("coursenumber", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CourseRegistration", studentidParameter, courseidParameter, starttimeParameter, coursenumberParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_CourseRegistration", studentidParameter, courseidParameter, coursenumberParameter, starttimeParameter);
         }
     
-        public virtual int sp_InsertCourse(Nullable<int> crn, string title, string starttime, string endtime, string startdate, string enddate, string classdates, Nullable<int> credits)
+        public virtual int sp_InsertCourse(Nullable<int> crn, string title, string starttime, string endtime, string startdate, string enddate, string classdates, Nullable<int> credits, Nullable<int> capacity, Nullable<bool> active)
         {
             var crnParameter = crn.HasValue ?
                 new ObjectParameter("crn", crn) :
@@ -93,7 +92,15 @@ namespace RegistrationApp.DataAccess
                 new ObjectParameter("credits", credits) :
                 new ObjectParameter("credits", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertCourse", crnParameter, titleParameter, starttimeParameter, endtimeParameter, startdateParameter, enddateParameter, classdatesParameter, creditsParameter);
-        }    
-  }
+            var capacityParameter = capacity.HasValue ?
+                new ObjectParameter("capacity", capacity) :
+                new ObjectParameter("capacity", typeof(int));
+    
+            var activeParameter = active.HasValue ?
+                new ObjectParameter("active", active) :
+                new ObjectParameter("active", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertCourse", crnParameter, titleParameter, starttimeParameter, endtimeParameter, startdateParameter, enddateParameter, classdatesParameter, creditsParameter, capacityParameter, activeParameter);
+        }
+    }
 }

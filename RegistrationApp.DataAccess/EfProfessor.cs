@@ -34,10 +34,18 @@ namespace RegistrationApp.DataAccess
 
         if (professor.FirstName != null)
           result.FirstName = professor.FirstName;
+
+        if (professor.Active != false)
+          result.Active = professor.Active;
       }
       return db.SaveChanges() > 0;
     }
 
+    public int GetTopP()
+    {
+      var topid = db.Professors.Where(a => a.Active).Max(a => a.ProfessorID);
+      return topid;
+    }
     public bool DeleteProfessor(Professor professor, int? id)
     {
       professor = db.Professors.Where(x => x.ProfessorID == id).FirstOrDefault();

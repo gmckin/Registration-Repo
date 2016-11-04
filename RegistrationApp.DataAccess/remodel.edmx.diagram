@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="892ff24e27904bd996e5071064a7908d" Name="Diagram1">
-        <EntityTypeShape EntityType="RegistrationDBModel.Building" Width="1.5" PointX="0.875" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="RegistrationDBModel.ClassRoom" Width="1.5" PointX="3.375" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="RegistrationDBModel.Course" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="RegistrationDBModel.CourseProfessor" Width="1.5" PointX="3.625" PointY="1.625" IsExpanded="true" />
+      <Diagram DiagramId="96fc9dac99f142eca22dd0d907194698" Name="Diagram1">
+        <EntityTypeShape EntityType="RegistrationDBModel.Building" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistrationDBModel.ClassRoom" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistrationDBModel.Course" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistrationDBModel.CourseProfessor" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RegistrationDBModel.Enrollment" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RegistrationDBModel.Professor" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RegistrationDBModel.Room" Width="1.5" PointX="0.875" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RegistrationDBModel.Student" Width="1.5" PointX="6.375" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RegistrationDBModel.vw_CourseLocations" Width="1.5" PointX="6.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistrationDBModel.Professor" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistrationDBModel.Room" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistrationDBModel.Student" Width="1.5" PointX="3.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistrationDBModel.vw_CourseLocations" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="RegistrationDBModel.FK_Registration_Building_Registration_Building_BuildingID" ManuallyRouted="false" />
         <AssociationConnector Association="RegistrationDBModel.FK_Registration_ClassRoom_Registrationo_Course_CourseID" ManuallyRouted="false" />
         <AssociationConnector Association="RegistrationDBModel.FK_Registration_Room_Registration_Room_RoomID" ManuallyRouted="false" />

@@ -51,7 +51,8 @@ namespace RegistrationApp.DataAccess
           StartDate = result[i].Course.StartDate,
           EndDate = result[i].Course.EndDate,
           ClassDates = result[i].Course.ClassDates,
-          Credits = result[i].Course.Credits
+          Credits = result[i].Course.Credits,
+          Capacity = result[i].Course.Capacity
         });
       }
 

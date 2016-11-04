@@ -30,12 +30,15 @@ namespace RegistrationApp.DataAccess
           result.RoomID = room.RoomID;
 
         if (room.RoomNum != 0)
-          result.RoomNum = room.RoomNum;
-
-        if (room.Capacity != 0)
-          result.Capacity = room.Capacity;
+          result.RoomNum = room.RoomNum;       
       }
       return db.SaveChanges() > 0;
+    }
+    
+    public int GetTopR()
+    {
+      var topid = db.Rooms.Max(a => a.RoomID);
+      return topid;
     }
 
     public bool DeleteRoom(Room room, int? id)

@@ -40,7 +40,7 @@ namespace RegistrationApp.DataAccess
           result.CourseNumber = enrollment.CourseNumber;
 
         if (enrollment.StartTime != null)
-          result.StartTime = enrollment.StartTime;
+          result.StartTime = enrollment.StartTime;        
       }
       return db.SaveChanges() > 0;
     }
@@ -61,9 +61,15 @@ namespace RegistrationApp.DataAccess
       return studentenrollment.ToList();
     }
 
+    public int GetTopE()
+    {
+      var topid = db.Enrollments.Max(a => a.EnrollmentID);
+      return topid;
+    }
+
     public bool Enroll()
     {
-      return db.sp_CourseRegistration(11, 13, TimeSpan.Parse("10:00"), "1112") > 0;
+      return db.sp_CourseRegistration(2, 3, 8845, TimeSpan.Parse("09:00")) > 0;
     }
   }
 }

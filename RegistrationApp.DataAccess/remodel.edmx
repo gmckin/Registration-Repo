@@ -36,6 +36,8 @@
           <Property Name="EndDate" Type="date" Nullable="false" />
           <Property Name="ClassDates" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Credits" Type="int" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="CourseProfessor">
           <Key>
@@ -62,6 +64,7 @@
           <Property Name="ProfessorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LastName" Type="nvarchar(max)" />
           <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Room">
           <Key>
@@ -69,7 +72,6 @@
           </Key>
           <Property Name="RoomID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoomNum" Type="int" Nullable="false" />
-          <Property Name="Capacity" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -79,16 +81,19 @@
           <Property Name="LastName" Type="nvarchar(max)" />
           <Property Name="FirstName" Type="nvarchar(max)" />
           <Property Name="Major" Type="nvarchar(max)" />
+          <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'RegistrationDB.Registration.vw_CourseLocations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_CourseLocations">
           <Key>
+            <PropertyRef Name="CourseID" />
             <PropertyRef Name="BuildingName" />
             <PropertyRef Name="RoomNum" />
             <PropertyRef Name="Capacity" />
             <PropertyRef Name="StartTime" />
           </Key>
+          <Property Name="CourseID" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar(max)" />
           <Property Name="BuildingName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="RoomNum" Type="int" Nullable="false" />
@@ -98,6 +103,7 @@ warning 6002: The table/view 'RegistrationDB.Registration.vw_CourseLocations' do
         <!--Errors Found During Generation:
 warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="vw_StudentCourses">
+          <Property Name="StudentID" Type="int" />
           <Property Name="FirstName" Type="nvarchar(max)" />
           <Property Name="LastName" Type="nvarchar(max)" />
           <Property Name="Title" Type="nvarchar(max)" />
@@ -217,8 +223,8 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
         <Function Name="sp_CourseRegistration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Registration">
           <Parameter Name="studentid" Type="int" Mode="In" />
           <Parameter Name="courseid" Type="int" Mode="In" />
+          <Parameter Name="coursenumber" Type="int" Mode="In" />
           <Parameter Name="starttime" Type="time" Mode="In" />
-          <Parameter Name="coursenumber" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_InsertCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Registration">
           <Parameter Name="crn" Type="int" Mode="In" />
@@ -229,6 +235,8 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
           <Parameter Name="enddate" Type="nvarchar" Mode="In" />
           <Parameter Name="classdates" Type="nvarchar" Mode="In" />
           <Parameter Name="credits" Type="int" Mode="In" />
+          <Parameter Name="capacity" Type="int" Mode="In" />
+          <Parameter Name="active" Type="bit" Mode="In" />
         </Function>
         <EntityContainer Name="RegistrationDBModelStoreContainer">
           <EntitySet Name="Building" EntityType="Self.Building" Schema="Registration" store:Type="Tables" />
@@ -241,6 +249,7 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
           <EntitySet Name="Student" EntityType="Self.Student" Schema="Registration" store:Type="Tables" />
           <EntitySet Name="vw_CourseLocations" EntityType="Self.vw_CourseLocations" store:Type="Views" store:Schema="Registration">
             <DefiningQuery>SELECT 
+    [vw_CourseLocations].[CourseID] AS [CourseID], 
     [vw_CourseLocations].[Title] AS [Title], 
     [vw_CourseLocations].[BuildingName] AS [BuildingName], 
     [vw_CourseLocations].[RoomNum] AS [RoomNum], 
@@ -317,6 +326,8 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ClassDates" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Credits" Type="Int32" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="ClassRooms" Relationship="Self.FK_Registration_ClassRoom_Registrationo_Course_CourseID" FromRole="Course" ToRole="ClassRoom" />
           <NavigationProperty Name="CourseProfessors" Relationship="Self.FK_Registration_CourseProfessor_Registrationo_Course_CourseID" FromRole="Course" ToRole="CourseProfessor" />
           <NavigationProperty Name="Enrollments" Relationship="Self.FK_Registration_Enrollment_Registrationo_Course_CourseID" FromRole="Course" ToRole="Enrollment" />
@@ -350,6 +361,7 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
           <Property Name="ProfessorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="CourseProfessors" Relationship="Self.FK_Registration_CourseProfessor_Registration_CourseProfessor_ProfessorID" FromRole="Professor" ToRole="CourseProfessor" />
         </EntityType>
         <EntityType Name="Room">
@@ -358,7 +370,6 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
           </Key>
           <Property Name="RoomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RoomNum" Type="Int32" Nullable="false" />
-          <Property Name="Capacity" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ClassRooms" Relationship="Self.FK_Registration_Room_Registration_Room_RoomID" FromRole="Room" ToRole="ClassRoom" />
         </EntityType>
         <EntityType Name="Student">
@@ -369,15 +380,18 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
           <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Major" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Enrollments" Relationship="Self.FK_Registration_Enrollment_Registration_Student_StudentID" FromRole="Student" ToRole="Enrollment" />
         </EntityType>
         <EntityType Name="vw_CourseLocations">
           <Key>
+            <PropertyRef Name="CourseID" />
             <PropertyRef Name="BuildingName" />
             <PropertyRef Name="RoomNum" />
             <PropertyRef Name="Capacity" />
             <PropertyRef Name="StartTime" />
           </Key>
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="BuildingName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RoomNum" Type="Int32" Nullable="false" />
@@ -523,8 +537,8 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
           <FunctionImport Name="sp_CourseRegistration">
             <Parameter Name="studentid" Mode="In" Type="Int32" />
             <Parameter Name="courseid" Mode="In" Type="Int32" />
+            <Parameter Name="coursenumber" Mode="In" Type="Int32" />
             <Parameter Name="starttime" Mode="In" Type="Time" />
-            <Parameter Name="coursenumber" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_InsertCourse">
             <Parameter Name="crn" Mode="In" Type="Int32" />
@@ -535,6 +549,8 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
             <Parameter Name="enddate" Mode="In" Type="String" />
             <Parameter Name="classdates" Mode="In" Type="String" />
             <Parameter Name="credits" Mode="In" Type="Int32" />
+            <Parameter Name="capacity" Mode="In" Type="Int32" />
+            <Parameter Name="active" Mode="In" Type="Boolean" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -575,6 +591,8 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="ClassDates" ColumnName="ClassDates" />
                 <ScalarProperty Name="Credits" ColumnName="Credits" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -604,6 +622,7 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
                 <ScalarProperty Name="ProfessorID" ColumnName="ProfessorID" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -612,7 +631,6 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
               <MappingFragment StoreEntitySet="Room">
                 <ScalarProperty Name="RoomID" ColumnName="RoomID" />
                 <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
-                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -623,12 +641,14 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="Major" ColumnName="Major" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vw_CourseLocations">
             <EntityTypeMapping TypeName="RegistrationDBModel.vw_CourseLocations">
               <MappingFragment StoreEntitySet="vw_CourseLocations">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
                 <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />

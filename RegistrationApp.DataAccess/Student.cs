@@ -24,6 +24,7 @@ namespace RegistrationApp.DataAccess
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Major { get; set; }
+        public bool Active { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Enrollment> Enrollments { get; set; }

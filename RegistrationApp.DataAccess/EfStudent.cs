@@ -37,13 +37,20 @@ namespace RegistrationApp.DataAccess
 
         if (student.Major != null)
           result.Major = student.Major;
+
+        if (student.Active != false)
+          result.Active = student.Active;
       }
       return db.SaveChanges() > 0;
     }
 
-    public bool DeleteStudent(Student student, int? id)
+    public int GetTopS()
     {
-      
+      var topid = db.Students.Where(a => a.Active).Max(a => a.StudentID);
+      return topid;
+    }
+    public bool DeleteStudent(Student student, int? id)
+    {      
       student = db.Students.Where(x => x.StudentID == id).FirstOrDefault(); ;
       db.Students.Remove(student);
       return db.SaveChanges() > 0;

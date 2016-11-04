@@ -52,13 +52,24 @@ namespace RegistrationApp.DataAccess
 
         if (course.ClassDates != null)
           result.ClassDates = course.ClassDates;
+
+        if (course.Capacity != 0)
+          result.Capacity = course.Capacity;
+
+        if (course.Active != false)
+          result.Active = course.Active;
       }
       return db.SaveChanges() > 0;
     }
 
+    public int GetTopC()
+    {
+      var topid = db.Courses.Where(a => a.Active).Max(a => a.CourseID);
+      return topid;
+    }
     public bool DeleteCourse(Course course, int? id)
     {
-      course = db.Courses.Where(x => x.CourseID == id).FirstOrDefault();       
+      course = db.Courses.Where(x => x.CourseID == id).FirstOrDefault();
       db.Courses.Remove(course);
       return db.SaveChanges() > 0;
     }

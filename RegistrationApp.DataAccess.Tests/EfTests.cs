@@ -34,9 +34,10 @@ namespace RegistrationApp.DataAccess.Tests
     [Fact]
     public void Test_DeleteStudent()
     {
-      var id = 9;
-      var expected = db.Students.Where(x => x.StudentID == id).FirstOrDefault();
       var data = new EfData();
+      var id = data.GetTopS();
+      var expected = db.Students.Where(x => x.StudentID == id).FirstOrDefault();
+      
       
       var actual = data.DeleteStudent(expected, id);
 
@@ -47,10 +48,10 @@ namespace RegistrationApp.DataAccess.Tests
     [Fact]
     public void Test_DeleteRoom()
     {
-      var id = 5;
-      var expected = db.Rooms.Where(x => x.RoomID == id).FirstOrDefault();
       var data = new EfData();
-
+      var id = data.GetTopR();
+      var expected = db.Rooms.Where(x => x.RoomID == id).FirstOrDefault();
+     
       var actual = data.DeleteRoom(expected, id);
 
       Assert.True(actual);
@@ -59,9 +60,10 @@ namespace RegistrationApp.DataAccess.Tests
     [Fact]
     public void Test_DeleteProfessor()
     {
-      var id = 3;
-      var expected = db.Professors.Where(x => x.ProfessorID == id).FirstOrDefault();
       var data = new EfData();
+      var id = data.GetTopP();
+      var expected = db.Professors.Where(x => x.ProfessorID == id).FirstOrDefault();
+     
 
       var actual = data.DeleteProfessor(expected, id);
 
@@ -71,9 +73,10 @@ namespace RegistrationApp.DataAccess.Tests
     [Fact]
     public void Test_DeleteEnrollment()
     {
-      var id = 1;
-      var expected = db.Enrollments.Where(x => x.EnrollmentID == id).FirstOrDefault();
       var data = new EfData();
+      var id = data.GetTopE();
+      var expected = db.Enrollments.Where(x => x.EnrollmentID == id).FirstOrDefault();
+      
 
       var actual = data.DeleteEnrollment(expected, id);
 
@@ -83,9 +86,10 @@ namespace RegistrationApp.DataAccess.Tests
     [Fact]
     public void Test_DeleteCourse()
     {
-      var id = 9;
-      var expected = db.Courses.Where(x => x.CourseID == id).FirstOrDefault();
       var data = new EfData();
+      var id = data.GetTopC();
+      var expected = db.Courses.Where(x => x.CourseID == id).FirstOrDefault();
+     
 
       var actual = data.DeleteCourse(expected, id);
 
@@ -95,9 +99,10 @@ namespace RegistrationApp.DataAccess.Tests
     [Fact]
     public void Test_DeleteCourseProfessor()
     {
-      var id = 5;
-      var expected = db.CourseProfessors.Where(x => x.CourseProfessorID == id).FirstOrDefault();
       var data = new EfData();
+      var id = data.GetTopCP();
+      var expected = db.CourseProfessors.Where(x => x.CourseProfessorID == id).FirstOrDefault();
+      
 
       var actual = data.DeleteCourseProfessor(expected, id);
 
@@ -107,9 +112,10 @@ namespace RegistrationApp.DataAccess.Tests
     [Fact]
     public void Test_DeleteClassRoom()
     {
-      var id = 14;
-      var expected = db.ClassRooms.Where(x => x.ClassRoomID == id).FirstOrDefault();
       var data = new EfData();
+      var id = data.GetTopCR();
+      var expected = db.ClassRooms.Where(x => x.ClassRoomID == id).FirstOrDefault();
+     
 
       var actual = data.DeleteClassRoom(expected, id);
 
@@ -119,9 +125,9 @@ namespace RegistrationApp.DataAccess.Tests
     [Fact]
     public void Test_DeleteBuilding()
     {
-      var id = 5;
-      var expected = db.Buildings.Where(x => x.BuildingID == id).FirstOrDefault();
       var data = new EfData();
+      var id = data.GetTopB();
+      var expected = db.Buildings.Where(x => x.BuildingID == id).FirstOrDefault();      
 
       var actual = data.DeleteBuilding(expected, id);
 
@@ -155,7 +161,7 @@ namespace RegistrationApp.DataAccess.Tests
     public void Test_InsertCourse()
     {
       var data = new EfData();
-      var expected = new Course() { CourseNumber = 1112, Title = "PE106", StartTime = TimeSpan.Parse("10:00"), EndTime = TimeSpan.Parse("11:00"), StartDate = DateTime.Parse("10-24-2016"), EndDate = DateTime.Parse("12-23-2016"), ClassDates = "MTWRF"};
+      var expected = new Course() { CourseNumber = 1112, Title = "PE106", StartTime = TimeSpan.Parse("10:00"), EndTime = TimeSpan.Parse("11:00"), StartDate = DateTime.Parse("10-24-2016"), EndDate = DateTime.Parse("12-23-2016"), ClassDates = "MTWRF", Capacity = 25 , Active = true};
 
     var actual = data.AddCourse(expected);
 
@@ -166,7 +172,7 @@ namespace RegistrationApp.DataAccess.Tests
     public void Test_Enrollment()
     {
       var data = new EfData();
-      var expected = new Enrollment() { CourseID = 1, StudentID = 2, CourseNumber = 8844, StartTime = TimeSpan.Parse("08:00") };
+      var expected = new Enrollment() { CourseID = 1,  CourseNumber = 8844, StudentID = 5, StartTime = TimeSpan.Parse("08:00") };
 
       var actual = data.AddEnrollment(expected);
       
@@ -177,7 +183,7 @@ namespace RegistrationApp.DataAccess.Tests
     public void Test_Enrollment_sp()
     {
       var data = new EfData();
-      var expected = new Enrollment() { CourseID = 13, StudentID = 11, CourseNumber = 1112, StartTime = TimeSpan.Parse("10:00") };
+      var expected = new Enrollment() { CourseID = 2, StudentID = 3, CourseNumber = 8845, StartTime = TimeSpan.Parse("9:00") };
       
       var actual = data.Enroll();
 
@@ -199,7 +205,7 @@ namespace RegistrationApp.DataAccess.Tests
     public void Test_InsertRoom()
     {
       var data = new EfData();
-      var expected = new Room() { RoomNum = 127, Capacity = 25 };
+      var expected = new Room() { RoomNum = 127 };
 
       var actual = data.AddRoom(expected);
 

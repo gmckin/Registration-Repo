@@ -46,8 +46,12 @@ namespace RegistrationApp.DataAccess
      
       db.ClassRooms.Remove(classRoom);
       return db.SaveChanges() > 0;
+    }
 
-
+    public int GetTopCR()
+    {
+      var topid = db.ClassRooms.Max(a => a.ClassRoomID);
+      return topid;
     }
 
     //public List<ClassRoom> GetStudentClassRooms()

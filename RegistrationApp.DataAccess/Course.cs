@@ -31,6 +31,8 @@ namespace RegistrationApp.DataAccess
         public System.DateTime EndDate { get; set; }
         public string ClassDates { get; set; }
         public int Credits { get; set; }
+        public int Capacity { get; set; }
+        public bool Active { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClassRoom> ClassRooms { get; set; }

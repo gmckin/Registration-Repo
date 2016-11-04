@@ -35,9 +35,13 @@ namespace RegistrationApp.DataAccess
         if (building.Department != null)
           result.Department = building.Department;
       }
-      return db.SaveChanges() > 0;
+      return db.SaveChanges() > 0;    
+    }
 
-      return db.SaveChanges() > 0;
+    public int GetTopB()
+    {
+      var topid = db.Buildings.Max(a => a.BuildingID);
+      return topid;
     }
 
     public bool DeleteBuilding(Building building, int? id)

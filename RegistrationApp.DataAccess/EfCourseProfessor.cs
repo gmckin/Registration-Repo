@@ -54,6 +54,11 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
         
+    public int GetTopCP()
+    {
+      var topid = db.CourseProfessors.Max(a => a.CourseProfessorID);
+      return topid;
+    }
     //public List<ClassRoom> GetStudentClassRooms()
     //{
     //  var studentclassRoom = db.ClassRooms.Include(e => e.Building).Include(e => e.Room).ToList();

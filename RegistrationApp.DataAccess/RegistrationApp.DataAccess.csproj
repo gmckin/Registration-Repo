@@ -73,16 +73,16 @@
   <ItemGroup>
     <Compile Include="AdoData.cs" />
     <Compile Include="Building.cs">
-      <DependentUpon>RegModel.tt</DependentUpon>
+      <DependentUpon>remodel.tt</DependentUpon>
     </Compile>
     <Compile Include="ClassRoom.cs">
-      <DependentUpon>RegModel.tt</DependentUpon>
+      <DependentUpon>remodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Course.cs">
-      <DependentUpon>RegModel.tt</DependentUpon>
+      <DependentUpon>remodel.tt</DependentUpon>
     </Compile>
     <Compile Include="CourseProfessor.cs">
-      <DependentUpon>RegModel.tt</DependentUpon>
+      <DependentUpon>remodel.tt</DependentUpon>
     </Compile>
     <Compile Include="EfBuilding.cs" />
     <Compile Include="EfClassRoom.cs" />
@@ -95,61 +95,61 @@
     <Compile Include="EfRoom.cs" />
     <Compile Include="EfStudent.cs" />
     <Compile Include="Enrollment.cs">
-      <DependentUpon>RegModel.tt</DependentUpon>
+      <DependentUpon>remodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Professor.cs">
-      <DependentUpon>RegModel.tt</DependentUpon>
+      <DependentUpon>remodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegModel.Context.cs">
+    <Compile Include="remodel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RegModel.Context.tt</DependentUpon>
+      <DependentUpon>remodel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="RegModel.cs">
+    <Compile Include="remodel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RegModel.tt</DependentUpon>
+      <DependentUpon>remodel.tt</DependentUpon>
     </Compile>
-    <Compile Include="RegModel.Designer.cs">
+    <Compile Include="remodel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RegModel.edmx</DependentUpon>
+      <DependentUpon>remodel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Room.cs">
-      <DependentUpon>RegModel.tt</DependentUpon>
+      <DependentUpon>remodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Student.cs">
-      <DependentUpon>RegModel.tt</DependentUpon>
+      <DependentUpon>remodel.tt</DependentUpon>
     </Compile>
     <Compile Include="vw_CourseLocations.cs">
-      <DependentUpon>RegModel.tt</DependentUpon>
+      <DependentUpon>remodel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="RegModel.edmx">
+    <EntityDeploy Include="remodel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RegModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>remodel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="RegModel.edmx.diagram">
-      <DependentUpon>RegModel.edmx</DependentUpon>
+    <None Include="remodel.edmx.diagram">
+      <DependentUpon>remodel.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="RegModel.Context.tt">
+    <Content Include="remodel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RegModel.edmx</DependentUpon>
-      <LastGenOutput>RegModel.Context.cs</LastGenOutput>
+      <DependentUpon>remodel.edmx</DependentUpon>
+      <LastGenOutput>remodel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="RegModel.tt">
+    <Content Include="remodel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RegModel.edmx</DependentUpon>
-      <LastGenOutput>RegModel.cs</LastGenOutput>
+      <DependentUpon>remodel.edmx</DependentUpon>
+      <LastGenOutput>remodel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
