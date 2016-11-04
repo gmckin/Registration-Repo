@@ -242,3 +242,6 @@ ModelManifest.xml
 .fake/
 /RegistrationApp.DataAccess/App.Config
 /RegistrationApp.DataAccess.Tests/App.config
+/RegistrationApp.DataClient/Web.config
+/RegistrationApp.DataClient/Web.Debug.config
+/RegistrationApp.DataClient/Web.Release.config
