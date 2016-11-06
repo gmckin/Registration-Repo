@@ -21,7 +21,7 @@ namespace RegistrationApp.DataAccess
 
     public List<Enrollment> GetCourseEnrollments()
     {
-      return data.GetStudentEnrollments();
+      return data.GetEnrollments();
     }
 
 
@@ -91,8 +91,6 @@ namespace RegistrationApp.DataAccess
     public bool AddStudent(Student student)
     {         
       return data.AddStudent(student);
-    }
-
-    
+    }    
   }
 }

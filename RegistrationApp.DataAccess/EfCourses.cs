@@ -73,5 +73,12 @@ namespace RegistrationApp.DataAccess
       db.Courses.Remove(course);
       return db.SaveChanges() > 0;
     }
+
+    public List<Course> GetCourseById(int id)
+    {
+      var result = db.Courses.Where(a => a.CourseID == id);
+
+      return result.ToList();
+    }
   }
 }

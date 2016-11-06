@@ -1,4 +1,5 @@
-﻿using RegistrationApp.DataClient.Models;
+﻿using RegistrationApp.DataAccess;
+using RegistrationApp.DataClient.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,10 @@ namespace RegistrationApp.DataClient
     List<CourseDAO> GetCourses();
 
     [OperationContract]
-    List<EnrollmentDAO> GetEnrollments();
+    List<Course> GetStudentEnrollments(int id);
+
+    [OperationContract]
+    List<Student> GetCourseEnrollments(int id);
 
     [OperationContract]
     bool InsertStudent(StudentDAO student);
@@ -29,9 +33,22 @@ namespace RegistrationApp.DataClient
     bool InsertCourse(CourseDAO course);
 
     [OperationContract]
-    bool InsertEnrollment(EnrollmentDAO enrollment);
+    bool InsertEnrollment(Enrollment enrollment);
 
+    [OperationContract]
+    List<ProfessorDAO> GetProfessors();
 
+    [OperationContract]
+    List<BuildingDAO> GetBuildings();
+
+    [OperationContract]
+    List<RoomDAO> GetRooms();
+
+    [OperationContract]
+    List<StudentDAO> GetStudentByID(int id);
+
+    [OperationContract]
+    List<CourseDAO> GetCourseByID(int id);
 
 
 

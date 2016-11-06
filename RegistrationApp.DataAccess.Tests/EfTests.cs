@@ -183,9 +183,9 @@ namespace RegistrationApp.DataAccess.Tests
     public void Test_Enrollment_sp()
     {
       var data = new EfData();
-      var expected = new Enrollment() { CourseID = 2, StudentID = 3, CourseNumber = 8845, StartTime = TimeSpan.Parse("9:00") };
+      var expected = new Enrollment() { CourseID = 3, StudentID = 8, CourseNumber = 8932, StartTime = TimeSpan.Parse("08:00") };
       
-      var actual = data.Enroll();
+      var actual = data.Enroll(expected);
 
       Assert.True(actual);
     }

@@ -7,24 +7,15 @@ using System.Web;
 namespace RegistrationApp.DataClient.Models
 {
   [DataContract]
-  public class StudentDAO
+  public class RoomDAO
   {
     [DataMember]
     public int Id { get; set; }
 
     [DataMember]
-    public string FirstName { get; set; }
+    public int RoomNumber { get; set; }
 
     [DataMember]
-    public string LastName { get; set; }
-
-    [DataMember]
-    public string Major { get; set; }
-
-    [DataMember]
-    public bool Active { get; set; }
-
-    [DataMember]
-    public CourseDAO Course { get; set; }
+    public BuildingDAO Building { get; set; }
   }
 }

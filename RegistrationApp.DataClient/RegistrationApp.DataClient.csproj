@@ -66,20 +66,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="RegistrationService..svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuildingMapper.cs" />
     <Compile Include="CourseMapper.cs" />
-    <Compile Include="EnrollmentAutoMapper.cs" />
-    <Compile Include="EnrollmentMapper.cs" />
-    <Compile Include="Models\CourseDAO.cs" />
     <Compile Include="Models\EnrollmentDAO.cs" />
+    <Compile Include="EnrollmentMapper.cs" />
+    <Compile Include="Models\BuildingDAO.cs" />
+    <Compile Include="Models\CourseDAO.cs" />
+    <Compile Include="Models\ProfessorDAO.cs" />
+    <Compile Include="Models\RoomDAO.cs" />
     <Compile Include="Models\StudentDAO.cs" />
+    <Compile Include="ProfessorMapper.cs" />
     <Compile Include="RegistrationService..svc.cs">
       <DependentUpon>RegistrationService..svc</DependentUpon>
     </Compile>
     <Compile Include="IRegistrationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomMapper.cs" />
     <Compile Include="StudentMapper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -111,16 +118,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2651</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:2318/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

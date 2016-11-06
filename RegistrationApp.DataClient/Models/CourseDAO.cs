@@ -41,5 +41,8 @@ namespace RegistrationApp.DataClient.Models
       
     [DataMember]
     public bool Active { get; set; }
+
+    [DataMember]
+    public StudentDAO Student { get; set; }
   }
 }

@@ -1,6 +1,5 @@
 ﻿using RegistrationApp.DataAccess;
 using RegistrationApp.DataClient.Models;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,22 +7,19 @@ using System.Web;
 
 namespace RegistrationApp.DataClient
 {
-  public class EnrollmentMapper
+  public class BuildingMapper
   {
-    //public static EnrollmentDAO MapToEnrollmentDAO(Enrollment enrollment)
-    //{
-    //  var e = new EnrollmentDAO();
-      
-    //    e.Id = enrollment.EnrollmentID;
-    //    e.CourseId = enrollment.CourseID;
-    //    e.CourseNumber = enrollment.CourseNumber;
-    //    e.StudentId = enrollment.StudentID;
-    //    e.StartTime = enrollment.StartTime;
+    public static BuildingDAO MapToBuildingDAO(Building building)
+    {
+      var p = new BuildingDAO();
+      p.Id = building.BuildingID;
+      p.Name = building.BuildingName;
+      p.Department = building.Department;
      
-    //  return e;
-    //}
+      return p;
+    }
 
-    public static Enrollment MapToEnrollment(EnrollmentDAO enrollment)
+    public static Building MapToBuilding(BuildingDAO building)
     {
       throw new NotImplementedException();
     }

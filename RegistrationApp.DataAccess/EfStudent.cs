@@ -55,5 +55,12 @@ namespace RegistrationApp.DataAccess
       db.Students.Remove(student);
       return db.SaveChanges() > 0;
     }
+
+    public List<Student> GetStudentById(int id)
+    {
+      var result = db.Students.Where(a => a.StudentID == id);
+
+      return result.ToList();
+    }
   }
 }

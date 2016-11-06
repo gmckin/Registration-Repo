@@ -7,7 +7,7 @@ using System.Web;
 namespace RegistrationApp.DataClient.Models
 {
   [DataContract]
-  public class StudentDAO
+  public class ProfessorDAO
   {
     [DataMember]
     public int Id { get; set; }
@@ -16,10 +16,7 @@ namespace RegistrationApp.DataClient.Models
     public string FirstName { get; set; }
 
     [DataMember]
-    public string LastName { get; set; }
-
-    [DataMember]
-    public string Major { get; set; }
+    public string LastName { get; set; }    
 
     [DataMember]
     public bool Active { get; set; }

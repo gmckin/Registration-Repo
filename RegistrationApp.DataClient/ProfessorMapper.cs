@@ -1,6 +1,5 @@
 ﻿using RegistrationApp.DataAccess;
 using RegistrationApp.DataClient.Models;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,22 +7,20 @@ using System.Web;
 
 namespace RegistrationApp.DataClient
 {
-  public class EnrollmentMapper
+  public class ProfessorMapper
   {
-    //public static EnrollmentDAO MapToEnrollmentDAO(Enrollment enrollment)
-    //{
-    //  var e = new EnrollmentDAO();
-      
-    //    e.Id = enrollment.EnrollmentID;
-    //    e.CourseId = enrollment.CourseID;
-    //    e.CourseNumber = enrollment.CourseNumber;
-    //    e.StudentId = enrollment.StudentID;
-    //    e.StartTime = enrollment.StartTime;
-     
-    //  return e;
-    //}
+    public static ProfessorDAO MapToProfessorDAO(Professor professor)
+    {
+      var p = new ProfessorDAO();
+      p.Id = professor.ProfessorID;
+      p.FirstName = professor.FirstName;
+      p.LastName = professor.LastName;      
+      p.Active = professor.Active;
 
-    public static Enrollment MapToEnrollment(EnrollmentDAO enrollment)
+      return p;
+    }
+
+    public static Professor MapToProfessor(ProfessorDAO professor)
     {
       throw new NotImplementedException();
     }
