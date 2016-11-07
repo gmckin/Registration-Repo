@@ -187,18 +187,18 @@ namespace RegistrationApp.DataClient
       return ef.AddRoom(r);
     }
 
-    public bool DeleteStudent(StudentDAO student)
+    public bool DeleteStudent(int id)
     {
-      student = new StudentDAO();
+      
      
-      return ef.DeleteStudent(student.Id);
+      return ef.DeleteStudent(id);
     }
 
-    public bool DeleteCourse(CourseDAO course)
+    public bool DeleteCourse(int id)
     {
-      course = new CourseDAO();
+      
 
-      return ef.DeleteStudent(course.Id);
+      return ef.DeleteStudent(id);
     }
 
     public bool DeleteEnrollment(StudentDAO student, CourseDAO course)

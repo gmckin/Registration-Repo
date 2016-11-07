@@ -51,9 +51,12 @@ namespace RegistrationApp.DataClient
     List<CourseDAO> GetCourseByID(int id);
 
     [OperationContract]
-    bool DeleteStudent(StudentDAO student);
+    bool DeleteStudent(int id);
 
     [OperationContract]
-    bool DeleteCourse(CourseDAO course);
+    bool DeleteCourse(int id);
+
+    [OperationContract]
+    bool DeleteEnrollment(StudentDAO student, CourseDAO course);
   }
 }

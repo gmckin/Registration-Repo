@@ -35,7 +35,7 @@ namespace RegistrationApp.DataAccess
            Enrollment = Enrollment,
            Course = Course
          })
-         .Where(e => e.Enrollment.CourseID == id).ToList();
+         .Where(e => e.Enrollment.StudentID == id).ToList();
 
       List<Course> studentCourses = new List<Course>();
 
