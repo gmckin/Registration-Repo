@@ -12,7 +12,7 @@ namespace RegistrationApp.DataAccess.Tests
 {
   public class EfTests
   {
-    private RegistrationDBEntities db = new RegistrationDBEntities();
+    private RegDBEntities db = new RegDBEntities();
     [Fact]
     public void Test_GetStudent()
     {
@@ -39,7 +39,7 @@ namespace RegistrationApp.DataAccess.Tests
       var expected = db.Students.Where(x => x.StudentID == id).FirstOrDefault();
       
       
-      var actual = data.DeleteStudent(expected, id);
+      var actual = data.DeleteStudent(id);
 
       Assert.True(actual);
     }
@@ -78,7 +78,7 @@ namespace RegistrationApp.DataAccess.Tests
       var expected = db.Enrollments.Where(x => x.EnrollmentID == id).FirstOrDefault();
       
 
-      var actual = data.DeleteEnrollment(expected, id);
+      var actual = data.DeleteEnrollment(id);
 
       Assert.True(actual);
     }
@@ -172,7 +172,7 @@ namespace RegistrationApp.DataAccess.Tests
     public void Test_Enrollment()
     {
       var data = new EfData();
-      var expected = new Enrollment() { CourseID = 1,  CourseNumber = 8844, StudentID = 5, StartTime = TimeSpan.Parse("08:00") };
+      var expected = new Enrollment() { CourseID = 2,  CourseNumber = 8845, StudentID = 1, StartTime = TimeSpan.Parse("08:00") };
 
       var actual = data.AddEnrollment(expected);
       
@@ -183,7 +183,7 @@ namespace RegistrationApp.DataAccess.Tests
     public void Test_Enrollment_sp()
     {
       var data = new EfData();
-      var expected = new Enrollment() { CourseID = 3, StudentID = 8, CourseNumber = 8932, StartTime = TimeSpan.Parse("08:00") };
+      var expected = new Enrollment() { CourseID = 1, StudentID = 3, CourseNumber = 8844, StartTime = TimeSpan.Parse("08:00") };
       
       var actual = data.Enroll(expected);
 

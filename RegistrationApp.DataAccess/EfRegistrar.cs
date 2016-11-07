@@ -9,7 +9,7 @@ namespace RegistrationApp.DataAccess
 {
   public class EfRegistrar
   {
-    private RegistrationDBEntities db = new RegistrationDBEntities();
+    private RegDBEntities db = new RegDBEntities();
     EfData data = new EfData();
 
     public List<Course> GetCourses()

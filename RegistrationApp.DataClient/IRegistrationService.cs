@@ -33,7 +33,7 @@ namespace RegistrationApp.DataClient
     bool InsertCourse(CourseDAO course);
 
     [OperationContract]
-    bool InsertEnrollment(Enrollment enrollment);
+    bool InsertEnrollment(StudentDAO student, CourseDAO course);
 
     [OperationContract]
     List<ProfessorDAO> GetProfessors();
@@ -50,7 +50,10 @@ namespace RegistrationApp.DataClient
     [OperationContract]
     List<CourseDAO> GetCourseByID(int id);
 
+    [OperationContract]
+    bool DeleteStudent(StudentDAO student);
 
-
+    [OperationContract]
+    bool DeleteCourse(CourseDAO course);
   }
 }

@@ -73,8 +73,6 @@
   <ItemGroup>
     <Compile Include="BuildingMapper.cs" />
     <Compile Include="CourseMapper.cs" />
-    <Compile Include="Models\EnrollmentDAO.cs" />
-    <Compile Include="EnrollmentMapper.cs" />
     <Compile Include="Models\BuildingDAO.cs" />
     <Compile Include="Models\CourseDAO.cs" />
     <Compile Include="Models\ProfessorDAO.cs" />

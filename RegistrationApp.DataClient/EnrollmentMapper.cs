@@ -10,18 +10,18 @@ namespace RegistrationApp.DataClient
 {
   public class EnrollmentMapper
   {
-    //public static EnrollmentDAO MapToEnrollmentDAO(Enrollment enrollment)
-    //{
-    //  var e = new EnrollmentDAO();
-      
-    //    e.Id = enrollment.EnrollmentID;
-    //    e.CourseId = enrollment.CourseID;
-    //    e.CourseNumber = enrollment.CourseNumber;
-    //    e.StudentId = enrollment.StudentID;
-    //    e.StartTime = enrollment.StartTime;
-     
-    //  return e;
-    //}
+    public static EnrollmentDAO MapToEnrollmentDAO(Enrollment enrollment)
+    {
+      var e = new EnrollmentDAO();
+
+      e.Id = enrollment.EnrollmentID;
+      e.CourseId = enrollment.CourseID;
+      e.CourseNumber = enrollment.CourseNumber;
+      e.StudentId = enrollment.StudentID;
+      e.StartTime = enrollment.StartTime;
+
+      return e;
+    }
 
     public static Enrollment MapToEnrollment(EnrollmentDAO enrollment)
     {

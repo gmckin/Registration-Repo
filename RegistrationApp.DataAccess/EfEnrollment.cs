@@ -45,9 +45,9 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
 
-    public bool DeleteEnrollment(Enrollment enrollment, int? id)
+    public bool DeleteEnrollment(int id)
     {
-      enrollment = db.Enrollments.Where(x => x.EnrollmentID == id).FirstOrDefault();
+      var enrollment = db.Enrollments.Where(x => x.EnrollmentID == id).FirstOrDefault();
       db.Enrollments.Remove(enrollment);
       return db.SaveChanges() > 0;
 

@@ -13,15 +13,15 @@ namespace RegistrationApp.DataClient.Models
     public int Id { get; set; }
 
     [DataMember]
-    public CourseDAO CourseId { get; set; }
+    public int CourseId { get; set; }
 
     [DataMember]
-    public CourseDAO CourseNumber { get; set; }    
+    public int CourseNumber { get; set; }    
 
     [DataMember]
-    public StudentDAO StudentId { get; set; }
+    public int StudentId { get; set; }
 
     [DataMember]
-    public CourseDAO StartTime { get; set; }
+    public TimeSpan StartTime { get; set; }
   }
 }

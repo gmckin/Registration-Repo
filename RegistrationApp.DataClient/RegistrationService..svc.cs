@@ -27,8 +27,8 @@ namespace RegistrationApp.DataClient
         c.Add(CourseMapper.MapToCourseDAO(courses));
       }
       return c;
-    }    
-        
+    }
+
     public List<StudentDAO> GetStudents()
     {
       var s = new List<StudentDAO>();
@@ -39,7 +39,7 @@ namespace RegistrationApp.DataClient
       }
       return s;
     }
-        
+
     public bool InsertCourse(CourseDAO course)
     {
       var c = new Course();
@@ -62,7 +62,7 @@ namespace RegistrationApp.DataClient
       s.FirstName = student.FirstName;
       s.LastName = student.LastName;
       s.Major = student.Major;
-      s.Active = true;    
+      s.Active = true;
 
       return ef.AddStudent(s);
     }
@@ -87,7 +87,7 @@ namespace RegistrationApp.DataClient
 
       return ef.AddProfessor(p);
     }
-  
+
     public List<StudentDAO> GetStudentByID(int id)
     {
       var s = new List<StudentDAO>();
@@ -135,19 +135,17 @@ namespace RegistrationApp.DataClient
     //  return s;
     //}
 
-   
 
-    public bool InsertEnrollment(Enrollment enrollment)
+
+    public bool InsertEnrollment(StudentDAO student, CourseDAO course)
     {
-      var student = new StudentDAO();
-      var course = new CourseDAO();
-      var e = new Enrollment();
-      e.StudentID = student.Id;
-      e.CourseID = course.Id;
-      e.CourseNumber = course.CourseNumber;
-      e.StartTime = course.StartTime;
-     
-      return ef.Enroll(e);
+      var enrollment = new Enrollment();
+      enrollment.StudentID = student.Id;
+      enrollment.CourseID = course.Id;
+      enrollment.CourseNumber = course.CourseNumber;
+      enrollment.StartTime = course.StartTime;
+
+      return ef.AddEnrollment(enrollment);
     }
 
     public List<BuildingDAO> GetBuildings()
@@ -188,5 +186,28 @@ namespace RegistrationApp.DataClient
 
       return ef.AddRoom(r);
     }
+
+    public bool DeleteStudent(StudentDAO student)
+    {
+      student = new StudentDAO();
+     
+      return ef.DeleteStudent(student.Id);
+    }
+
+    public bool DeleteCourse(CourseDAO course)
+    {
+      course = new CourseDAO();
+
+      return ef.DeleteStudent(course.Id);
+    }
+
+    public bool DeleteEnrollment(StudentDAO student, CourseDAO course)
+    {      
+     var x = ef.GetEnrollments().Where(e => e.StudentID == student.Id && e.CourseNumber == course.CourseNumber).ToList();
+
+      return ef.DeleteEnrollment(x[0].EnrollmentID);
+    }
+
+    
   }
 }
