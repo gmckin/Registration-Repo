@@ -94,18 +94,18 @@ namespace RegistrationApp.Tests
       Assert.True(actual);
     }
 
-    [Fact]
-    public void Test_DeleteCourseProfessor()
-    {
-      var data = new EfData();
-      var id = data.GetTopCP();
-      var expected = db.CourseProfessors.Where(x => x.CourseProfessorID == id).FirstOrDefault();
+    //[Fact]
+    //public void Test_DeleteCourseProfessor()
+    //{
+    //  var data = new EfData();
+    //  var id = data.GetTopCP();
+    //  var expected = db.CourseProfessors.Where(x => x.CourseProfessorID == id).FirstOrDefault();
 
 
-      var actual = data.DeleteCourseProfessor(expected, id);
+    //  var actual = data.DeleteCourseProfessor(expected, id);
 
-      Assert.True(actual);
-    }
+    //  Assert.True(actual);
+    //}
 
     [Fact]
     public void Test_DeleteClassRoom()
@@ -232,16 +232,16 @@ namespace RegistrationApp.Tests
       Assert.True(actual);
     }
 
-    [Fact]
-    public void Test_CreateCourseProfessor()
-    {
-      var data = new EfData();
-      var expected = new CourseProfessor() { CourseID = 1, ProfessorID = 1 };
+    //[Fact]
+    //public void Test_CreateCourseProfessor()
+    //{
+    //  var data = new EfData();
+    //  var expected = new CourseProfessor() { CourseID = 1, ProfessorID = 1 };
 
-      var actual = data.AddCourseProfessor(expected);
+    //  var actual = data.AddCourseProfessor(expected);
 
-      Assert.True(actual);
-    }
+    //  Assert.True(actual);
+    //}
 
 
     //[Fact]
