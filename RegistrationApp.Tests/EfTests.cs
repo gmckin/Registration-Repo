@@ -55,44 +55,44 @@ namespace RegistrationApp.Tests
       Assert.True(actual);
     }
 
-    [Fact]
-    public void Test_DeleteProfessor()
-    {
-      var data = new EfData();
-      var id = data.GetTopP();
-      var expected = db.Professors.Where(x => x.ProfessorID == id).FirstOrDefault();
+    //[Fact]
+    //public void Test_DeleteProfessor()
+    //{
+    //  var data = new EfData();
+    //  var id = data.GetTopP();
+    //  var expected = db.Professors.Where(x => x.ProfessorID == id).FirstOrDefault();
 
 
-      var actual = data.DeleteProfessor(expected, id);
+    //  var actual = data.DeleteProfessor(expected, id);
 
-      Assert.True(actual);
-    }
+    //  Assert.True(actual);
+    //}
 
-    [Fact]
-    public void Test_DeleteEnrollment()
-    {
-      var data = new EfData();
-      var id = data.GetTopE();
-      var expected = db.Enrollments.Where(x => x.EnrollmentID == id).FirstOrDefault();
-
-
-      var actual = data.DeleteEnrollment(id);
-
-      Assert.True(actual);
-    }
-
-    [Fact]
-    public void Test_DeleteCourse()
-    {
-      var data = new EfData();
-      var id = data.GetTopC();
-      var expected = db.Courses.Where(x => x.CourseID == id).FirstOrDefault();
+    //[Fact]
+    //public void Test_DeleteEnrollment()
+    //{
+    //  var data = new EfData();
+    //  var id = data.GetTopE();
+    //  var expected = db.Enrollments.Where(x => x.EnrollmentID == id).FirstOrDefault();
 
 
-      var actual = data.DeleteCourse(expected, id);
+    //  var actual = data.DeleteEnrollment(id);
 
-      Assert.True(actual);
-    }
+    //  Assert.True(actual);
+    //}
+
+    //[Fact]
+    //public void Test_DeleteCourse()
+    //{
+    //  var data = new EfData();
+    //  var id = data.GetTopC();
+    //  var expected = db.Courses.Where(x => x.CourseID == id).FirstOrDefault();
+
+
+    //  var actual = data.DeleteCourse(expected, id);
+
+    //  Assert.True(actual);
+    //}
 
     //[Fact]
     //public void Test_DeleteCourseProfessor()
@@ -107,18 +107,18 @@ namespace RegistrationApp.Tests
     //  Assert.True(actual);
     //}
 
-    [Fact]
-    public void Test_DeleteClassRoom()
-    {
-      var data = new EfData();
-      var id = data.GetTopCR();
-      var expected = db.ClassRooms.Where(x => x.ClassRoomID == id).FirstOrDefault();
+    //[Fact]
+    //public void Test_DeleteClassRoom()
+    //{
+    //  var data = new EfData();
+    //  var id = data.GetTopCR();
+    //  var expected = db.ClassRooms.Where(x => x.ClassRoomID == id).FirstOrDefault();
 
 
-      var actual = data.DeleteClassRoom(expected, id);
+    //  var actual = data.DeleteClassRoom(expected, id);
 
-      Assert.True(actual);
-    }
+    //  Assert.True(actual);
+    //}
 
     [Fact]
     public void Test_DeleteBuilding()
@@ -166,16 +166,16 @@ namespace RegistrationApp.Tests
     //  Assert.True(actual);
     //}
 
-    [Fact]
-    public void Test_Enrollment()
-    {
-      var data = new EfData();
-      var expected = new Enrollment() { CourseID = 2, CourseNumber = 8845, StudentID = 1, StartTime = TimeSpan.Parse("08:00") };
+    //[Fact]
+    //public void Test_Enrollment()
+    //{
+    //  var data = new EfData();
+    //  var expected = new Enrollment() { CourseID = 2, CourseNumber = 8845, StudentID = 1, StartTime = TimeSpan.Parse("08:00") };
 
-      var actual = data.AddEnrollment(expected);
+    //  var actual = data.AddEnrollment(expected);
 
-      Assert.True(actual);
-    }
+    //  Assert.True(actual);
+    //}
 
     //[Fact]
     //public void Test_Enrollment_sp()
@@ -210,16 +210,16 @@ namespace RegistrationApp.Tests
       Assert.True(actual);
     }
 
-    [Fact]
-    public void Test_CreateClassRoom()
-    {
-      var data = new EfData();
-      var expected = new ClassRoom() { CourseID = 2, BuildingID = 2, RoomID = 3, StartTime = TimeSpan.Parse("10:00") };
+    //[Fact]
+    //public void Test_CreateClassRoom()
+    //{
+    //  var data = new EfData();
+    //  var expected = new ClassRoom() { CourseID = 2, BuildingID = 2, RoomID = 3, StartTime = TimeSpan.Parse("10:00") };
 
-      var actual = data.AddClassRoom(expected);
+    //  var actual = data.AddClassRoom(expected);
 
-      Assert.True(actual);
-    }
+    //  Assert.True(actual);
+    //}
 
     [Fact]
     public void Test_InsertProfessor()
