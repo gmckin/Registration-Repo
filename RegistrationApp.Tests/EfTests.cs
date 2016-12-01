@@ -10,7 +10,7 @@ namespace RegistrationApp.Tests
 {
   public class EfTests
   {
-    private RegDBEntities db = new RegDBEntities();
+    private RegistrationDBEntities db = new RegistrationDBEntities();
     [Fact]
     public void Test_GetStudent()
     {

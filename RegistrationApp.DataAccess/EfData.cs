@@ -9,7 +9,7 @@ namespace RegistrationApp.DataAccess
 {
   public partial class EfData
   {
-    private RegDBEntities db = new RegDBEntities();
+    private RegistrationDBEntities db = new RegistrationDBEntities();
 
     
   }

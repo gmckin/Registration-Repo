@@ -15,10 +15,10 @@ namespace RegistrationApp.DataAccess
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class RegDBEntities : DbContext
+    public partial class RegistrationDBEntities : DbContext
     {
-        public RegDBEntities()
-            : base("name=RegDBEntities")
+        public RegistrationDBEntities()
+            : base("name=RegistrationDBEntities")
         {
         }
     
