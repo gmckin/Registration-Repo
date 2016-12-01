@@ -155,16 +155,16 @@ namespace RegistrationApp.Tests
       Assert.True(actual);
     }
 
-    [Fact]
-    public void Test_InsertCourse()
-    {
-      var data = new EfData();
-      var expected = new Course() { CourseNumber = 1112, Title = "PE106", StartTime = TimeSpan.Parse("10:00"), EndTime = TimeSpan.Parse("11:00"), StartDate = DateTime.Parse("10-24-2016"), EndDate = DateTime.Parse("12-23-2016"), ClassDates = "MTWRF", Capacity = 25, Active = true };
+    //[Fact]
+    //public void Test_InsertCourse()
+    //{
+    //  var data = new EfData();
+    //  var expected = new Course() { CourseNumber = 1112, Title = "PE106", StartTime = TimeSpan.Parse("10:00"), EndTime = TimeSpan.Parse("11:00"), StartDate = DateTime.Parse("10-24-2016"), EndDate = DateTime.Parse("12-23-2016"), ClassDates = "MTWRF", Capacity = 25, Active = true };
 
-      var actual = data.AddCourse(expected);
+    //  var actual = data.AddCourse(expected);
 
-      Assert.True(actual);
-    }
+    //  Assert.True(actual);
+    //}
 
     [Fact]
     public void Test_Enrollment()
@@ -177,16 +177,16 @@ namespace RegistrationApp.Tests
       Assert.True(actual);
     }
 
-    [Fact]
-    public void Test_Enrollment_sp()
-    {
-      var data = new EfData();
-      var expected = new Enrollment() { CourseID = 1, StudentID = 3, CourseNumber = 8844, StartTime = TimeSpan.Parse("08:00") };
+    //[Fact]
+    //public void Test_Enrollment_sp()
+    //{
+    //  var data = new EfData();
+    //  var expected = new Enrollment() { CourseID = 1, StudentID = 3, CourseNumber = 8844, StartTime = TimeSpan.Parse("08:00") };
 
-      var actual = data.Enroll(expected);
+    //  var actual = data.Enroll(expected);
 
-      Assert.True(actual);
-    }
+    //  Assert.True(actual);
+    //}
 
     [Fact]
     public void Test_InsertBuilding()
