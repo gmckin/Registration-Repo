@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationApp.DataAccess", "RegistrationApp.DataAccess\RegistrationApp.DataAccess.csproj", "{C78852B7-748D-410B-8719-BB336585C55A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationApp.DataAccess.Tests", "RegistrationApp.DataAccess.Tests\RegistrationApp.DataAccess.Tests.csproj", "{BC65990C-0967-4D6D-AACC-AEF2FFABB607}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistrationApp.DataClient", "RegistrationApp.DataClient\RegistrationApp.DataClient.csproj", "{2E822968-44D2-41B5-828A-FBD7CBBCCFA8}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{C78852B7-748D-410B-8719-BB336585C55A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C78852B7-748D-410B-8719-BB336585C55A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C78852B7-748D-410B-8719-BB336585C55A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BC65990C-0967-4D6D-AACC-AEF2FFABB607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC65990C-0967-4D6D-AACC-AEF2FFABB607}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC65990C-0967-4D6D-AACC-AEF2FFABB607}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC65990C-0967-4D6D-AACC-AEF2FFABB607}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2E822968-44D2-41B5-828A-FBD7CBBCCFA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2E822968-44D2-41B5-828A-FBD7CBBCCFA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E822968-44D2-41B5-828A-FBD7CBBCCFA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
