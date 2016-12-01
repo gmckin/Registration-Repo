@@ -5,15 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="500638ac05884e70a2849d3c53589def" Name="Diagram1">
-        <EntityTypeShape EntityType="RegDBModel.Building" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="RegDBModel.ClassRoom" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegDBModel.Building" Width="1.5" PointX="4.875" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegDBModel.ClassRoom" Width="1.5" PointX="3.625" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="RegDBModel.Course" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RegDBModel.CourseProfessor" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegDBModel.CourseProfessor" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="RegDBModel.Enrollment" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="RegDBModel.Professor" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RegDBModel.Room" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="RegDBModel.Student" Width="1.5" PointX="3.75" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="RegDBModel.vw_CourseLocations" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegDBModel.Room" Width="1.5" PointX="1.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegDBModel.Student" Width="1.5" PointX="7.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegDBModel.vw_CourseLocations" Width="1.5" PointX="11.125" PointY="1.5" IsExpanded="true" />
         <AssociationConnector Association="RegDBModel.FK_Registration_Building_Registration_Building_BuildingID" ManuallyRouted="false" />
         <AssociationConnector Association="RegDBModel.FK_Registration_ClassRoom_Registrationo_Course_CourseID" ManuallyRouted="false" />
         <AssociationConnector Association="RegDBModel.FK_Registration_Room_Registration_Room_RoomID" ManuallyRouted="false" />
