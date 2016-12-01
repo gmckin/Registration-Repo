@@ -49,11 +49,20 @@ namespace RegistrationApp.DataAccess
       var topid = db.Students.Where(a => a.Active).Max(a => a.StudentID);
       return topid;
     }
-    public bool DeleteStudent(Student student, int? id)
+    public bool DeleteStudent(int id)
     {      
-      student = db.Students.Where(x => x.StudentID == id).FirstOrDefault(); ;
+      var student = db.Students.Where(x => x.StudentID == id).FirstOrDefault(); 
       db.Students.Remove(student);
       return db.SaveChanges() > 0;
     }
+
+    public List<Student> GetStudentById(int id)
+    {
+      var result = db.Students.Where(a => a.StudentID == id);
+
+      return result.ToList();
+    }
+
+   
   }
 }

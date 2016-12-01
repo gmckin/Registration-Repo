@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RegistrationDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="RegDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Building">
           <Key>
             <PropertyRef Name="BuildingID" />
@@ -84,7 +84,7 @@
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'RegistrationDB.Registration.vw_CourseLocations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'RegDB.Registration.vw_CourseLocations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_CourseLocations">
           <Key>
             <PropertyRef Name="CourseID" />
@@ -101,7 +101,7 @@ warning 6002: The table/view 'RegistrationDB.Registration.vw_CourseLocations' do
           <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6013: The table/view 'RegDB.Registration.vw_StudentCourses' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="vw_StudentCourses">
           <Property Name="StudentID" Type="int" />
           <Property Name="FirstName" Type="nvarchar(max)" />
@@ -238,7 +238,7 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
           <Parameter Name="capacity" Type="int" Mode="In" />
           <Parameter Name="active" Type="bit" Mode="In" />
         </Function>
-        <EntityContainer Name="RegistrationDBModelStoreContainer">
+        <EntityContainer Name="RegDBModelStoreContainer">
           <EntitySet Name="Building" EntityType="Self.Building" Schema="Registration" store:Type="Tables" />
           <EntitySet Name="ClassRoom" EntityType="Self.ClassRoom" Schema="Registration" store:Type="Tables" />
           <EntitySet Name="Course" EntityType="Self.Course" Schema="Registration" store:Type="Tables" />
@@ -290,7 +290,7 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="RegistrationDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="RegDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Building">
           <Key>
             <PropertyRef Name="BuildingID" />
@@ -496,7 +496,7 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="RegistrationDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RegDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Buildings" EntityType="Self.Building" />
           <EntitySet Name="ClassRooms" EntityType="Self.ClassRoom" />
           <EntitySet Name="Courses" EntityType="Self.Course" />
@@ -558,9 +558,9 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="RegistrationDBModelStoreContainer" CdmEntityContainer="RegistrationDBEntities">
+        <EntityContainerMapping StorageEntityContainer="RegDBModelStoreContainer" CdmEntityContainer="RegDBEntities">
           <EntitySetMapping Name="Buildings">
-            <EntityTypeMapping TypeName="RegistrationDBModel.Building">
+            <EntityTypeMapping TypeName="RegDBModel.Building">
               <MappingFragment StoreEntitySet="Building">
                 <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
                 <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
@@ -569,7 +569,7 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ClassRooms">
-            <EntityTypeMapping TypeName="RegistrationDBModel.ClassRoom">
+            <EntityTypeMapping TypeName="RegDBModel.ClassRoom">
               <MappingFragment StoreEntitySet="ClassRoom">
                 <ScalarProperty Name="ClassRoomID" ColumnName="ClassRoomID" />
                 <ScalarProperty Name="CourseID" ColumnName="CourseID" />
@@ -580,7 +580,7 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Courses">
-            <EntityTypeMapping TypeName="RegistrationDBModel.Course">
+            <EntityTypeMapping TypeName="RegDBModel.Course">
               <MappingFragment StoreEntitySet="Course">
                 <ScalarProperty Name="CourseID" ColumnName="CourseID" />
                 <ScalarProperty Name="CourseNumber" ColumnName="CourseNumber" />
@@ -597,7 +597,7 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CourseProfessors">
-            <EntityTypeMapping TypeName="RegistrationDBModel.CourseProfessor">
+            <EntityTypeMapping TypeName="RegDBModel.CourseProfessor">
               <MappingFragment StoreEntitySet="CourseProfessor">
                 <ScalarProperty Name="CourseProfessorID" ColumnName="CourseProfessorID" />
                 <ScalarProperty Name="CourseID" ColumnName="CourseID" />
@@ -606,7 +606,7 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Enrollments">
-            <EntityTypeMapping TypeName="RegistrationDBModel.Enrollment">
+            <EntityTypeMapping TypeName="RegDBModel.Enrollment">
               <MappingFragment StoreEntitySet="Enrollment">
                 <ScalarProperty Name="EnrollmentID" ColumnName="EnrollmentID" />
                 <ScalarProperty Name="CourseID" ColumnName="CourseID" />
@@ -617,7 +617,7 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Professors">
-            <EntityTypeMapping TypeName="RegistrationDBModel.Professor">
+            <EntityTypeMapping TypeName="RegDBModel.Professor">
               <MappingFragment StoreEntitySet="Professor">
                 <ScalarProperty Name="ProfessorID" ColumnName="ProfessorID" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -627,7 +627,7 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Rooms">
-            <EntityTypeMapping TypeName="RegistrationDBModel.Room">
+            <EntityTypeMapping TypeName="RegDBModel.Room">
               <MappingFragment StoreEntitySet="Room">
                 <ScalarProperty Name="RoomID" ColumnName="RoomID" />
                 <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
@@ -635,7 +635,7 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Students">
-            <EntityTypeMapping TypeName="RegistrationDBModel.Student">
+            <EntityTypeMapping TypeName="RegDBModel.Student">
               <MappingFragment StoreEntitySet="Student">
                 <ScalarProperty Name="StudentID" ColumnName="StudentID" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -646,7 +646,7 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vw_CourseLocations">
-            <EntityTypeMapping TypeName="RegistrationDBModel.vw_CourseLocations">
+            <EntityTypeMapping TypeName="RegDBModel.vw_CourseLocations">
               <MappingFragment StoreEntitySet="vw_CourseLocations">
                 <ScalarProperty Name="CourseID" ColumnName="CourseID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -657,8 +657,8 @@ warning 6013: The table/view 'RegistrationDB.Registration.vw_StudentCourses' doe
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_CourseRegistration" FunctionName="RegistrationDBModel.Store.sp_CourseRegistration" />
-          <FunctionImportMapping FunctionImportName="sp_InsertCourse" FunctionName="RegistrationDBModel.Store.sp_InsertCourse" />
+          <FunctionImportMapping FunctionImportName="sp_CourseRegistration" FunctionName="RegDBModel.Store.sp_CourseRegistration" />
+          <FunctionImportMapping FunctionImportName="sp_InsertCourse" FunctionName="RegDBModel.Store.sp_InsertCourse" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

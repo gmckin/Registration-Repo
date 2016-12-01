@@ -14,9 +14,9 @@ namespace RegistrationApp.DataAccess
       return db.Enrollments.ToList();
     }
 
+    
     public bool AddEnrollment(Enrollment enrollment)
     {
-
       db.Enrollments.Add(enrollment);
       return db.SaveChanges() > 0;
     }
@@ -45,16 +45,16 @@ namespace RegistrationApp.DataAccess
       return db.SaveChanges() > 0;
     }
 
-    public bool DeleteEnrollment(Enrollment enrollment, int? id)
+    public bool DeleteEnrollment(int id)
     {
-      enrollment = db.Enrollments.Where(x => x.EnrollmentID == id).FirstOrDefault();
+      var enrollment = db.Enrollments.Where(x => x.EnrollmentID == id).FirstOrDefault();
       db.Enrollments.Remove(enrollment);
       return db.SaveChanges() > 0;
 
 
     }
 
-    public List<Enrollment> GetStudentEnrollments()
+    public List<Enrollment> GetCourseEnrollments()
     {
       //var studentenrollment = db.Students.Include(Enrollment => Enrollment.Enrollments.Select(Course => Course)).ToList();
       var studentenrollment = db.Enrollments.Include(e => e.Course).Include(e => e.Student);
@@ -67,9 +67,20 @@ namespace RegistrationApp.DataAccess
       return topid;
     }
 
-    public bool Enroll()
+    public bool Enroll(Enrollment enrollment)
     {
-      return db.sp_CourseRegistration(2, 3, 8845, TimeSpan.Parse("09:00")) > 0;
+      var student = new Student();
+      var course = new Course();
+      var e = new Enrollment();
+      e.StudentID = student.StudentID;
+      e.CourseID = course.CourseID;
+      e.CourseNumber = course.CourseNumber;
+      e.StartTime = course.StartTime;
+      // { CourseID = 3, StudentID = 8, CourseNumber = 8932, StartTime = TimeSpan.Parse("08:00") }
+
+      db.sp_CourseRegistration(e.StudentID, e.CourseID, e.CourseID, e.StartTime);
+
+      return db.SaveChanges() > 0;
     }
   }
 }

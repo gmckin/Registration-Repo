@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace RegistrationApp.DataAccess
 {
-  partial class EfData
+  public partial class EfData
   {
-    private RegistrationDBEntities db = new RegistrationDBEntities();
+    private RegDBEntities db = new RegDBEntities();
 
     
   }

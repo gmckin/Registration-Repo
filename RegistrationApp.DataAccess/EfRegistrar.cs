@@ -9,7 +9,7 @@ namespace RegistrationApp.DataAccess
 {
   public class EfRegistrar
   {
-    private RegistrationDBEntities db = new RegistrationDBEntities();
+    private RegDBEntities db = new RegDBEntities();
     EfData data = new EfData();
 
     public List<Course> GetCourses()
@@ -21,7 +21,7 @@ namespace RegistrationApp.DataAccess
 
     public List<Enrollment> GetCourseEnrollments()
     {
-      return data.GetStudentEnrollments();
+      return data.GetEnrollments();
     }
 
 
@@ -35,7 +35,7 @@ namespace RegistrationApp.DataAccess
            Enrollment = Enrollment,
            Course = Course
          })
-         .Where(e => e.Enrollment.CourseID == id).ToList();
+         .Where(e => e.Enrollment.StudentID == id).ToList();
 
       List<Course> studentCourses = new List<Course>();
 
@@ -91,8 +91,6 @@ namespace RegistrationApp.DataAccess
     public bool AddStudent(Student student)
     {         
       return data.AddStudent(student);
-    }
-
-    
+    }    
   }
 }
