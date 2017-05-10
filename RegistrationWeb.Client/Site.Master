@@ -1,0 +1,24 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="RegistrationWeb.Client.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+  <link rel="stylesheet" href="/Content/Styles.css" />
+  <title>Student Registration</title>
+  <asp:ContentPlaceHolder ID="head" runat="server">
+  </asp:ContentPlaceHolder> 
+</head>
+<body>
+  <form id="form1" runat="server">
+    <asp:Label runat="server" Font-Size="XX-Large">Student Registration</asp:Label>
+    <div>
+      <asp:ContentPlaceHolder ID="body" runat="server">
+        
+      </asp:ContentPlaceHolder>
+    </div>
+     <asp:Label runat="server" Font-Size="Large">Copyright &copy; 2016</asp:Label>
+        
+  </form>
+</body>
+</html>

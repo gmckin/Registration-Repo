@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RegistrationService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost/RegistrationApp.DataClient/RegistrationService..svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost/RegistrationApp.DataClient/RegistrationService..svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/RegistrationApp.DataClient/RegistrationService..svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RegistrationApp.DataClient.Models" />
+      <xsd:import schemaLocation="http://localhost/RegistrationApp.DataClient/RegistrationService..svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RegistrationApp.DataAccess" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IRegistrationService_GetStudents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudents" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetStudents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetCourses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCourses" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetCourses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCoursesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetStudentEnrollments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudentEnrollments" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetStudentEnrollments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudentEnrollmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetCourseEnrollments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCourseEnrollments" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetCourseEnrollments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCourseEnrollmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_InsertStudent_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertStudent" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_InsertStudent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertStudentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_InsertCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCourse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_InsertCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_InsertEnrollment_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertEnrollment" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_InsertEnrollment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertEnrollmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetProfessors_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfessors" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetProfessors_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProfessorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetBuildings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBuildings" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetBuildings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBuildingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetRooms_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRooms" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetRooms_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoomsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetStudentByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudentByID" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetStudentByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStudentByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetCourseByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCourseByID" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_GetCourseByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCourseByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_DeleteStudent_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStudent" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_DeleteStudent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteStudentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_DeleteCourse_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCourse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_DeleteCourse_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_DeleteEnrollment_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEnrollment" />
+  </wsdl:message>
+  <wsdl:message name="IRegistrationService_DeleteEnrollment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteEnrollmentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IRegistrationService">
+    <wsdl:operation name="GetStudents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/GetStudents" message="tns:IRegistrationService_GetStudents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/GetStudentsResponse" message="tns:IRegistrationService_GetStudents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourses">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/GetCourses" message="tns:IRegistrationService_GetCourses_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/GetCoursesResponse" message="tns:IRegistrationService_GetCourses_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentEnrollments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/GetStudentEnrollments" message="tns:IRegistrationService_GetStudentEnrollments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/GetStudentEnrollmentsResponse" message="tns:IRegistrationService_GetStudentEnrollments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseEnrollments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/GetCourseEnrollments" message="tns:IRegistrationService_GetCourseEnrollments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/GetCourseEnrollmentsResponse" message="tns:IRegistrationService_GetCourseEnrollments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertStudent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/InsertStudent" message="tns:IRegistrationService_InsertStudent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/InsertStudentResponse" message="tns:IRegistrationService_InsertStudent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/InsertCourse" message="tns:IRegistrationService_InsertCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/InsertCourseResponse" message="tns:IRegistrationService_InsertCourse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertEnrollment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/InsertEnrollment" message="tns:IRegistrationService_InsertEnrollment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/InsertEnrollmentResponse" message="tns:IRegistrationService_InsertEnrollment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProfessors">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/GetProfessors" message="tns:IRegistrationService_GetProfessors_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/GetProfessorsResponse" message="tns:IRegistrationService_GetProfessors_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildings">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/GetBuildings" message="tns:IRegistrationService_GetBuildings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/GetBuildingsResponse" message="tns:IRegistrationService_GetBuildings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRooms">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/GetRooms" message="tns:IRegistrationService_GetRooms_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/GetRoomsResponse" message="tns:IRegistrationService_GetRooms_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/GetStudentByID" message="tns:IRegistrationService_GetStudentByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/GetStudentByIDResponse" message="tns:IRegistrationService_GetStudentByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/GetCourseByID" message="tns:IRegistrationService_GetCourseByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/GetCourseByIDResponse" message="tns:IRegistrationService_GetCourseByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStudent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/DeleteStudent" message="tns:IRegistrationService_DeleteStudent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/DeleteStudentResponse" message="tns:IRegistrationService_DeleteStudent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCourse">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/DeleteCourse" message="tns:IRegistrationService_DeleteCourse_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/DeleteCourseResponse" message="tns:IRegistrationService_DeleteCourse_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEnrollment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistrationService/DeleteEnrollment" message="tns:IRegistrationService_DeleteEnrollment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistrationService/DeleteEnrollmentResponse" message="tns:IRegistrationService_DeleteEnrollment_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IRegistrationService" type="tns:IRegistrationService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetStudents">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/GetStudents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourses">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/GetCourses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentEnrollments">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/GetStudentEnrollments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseEnrollments">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/GetCourseEnrollments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertStudent">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/InsertStudent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCourse">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/InsertCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertEnrollment">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/InsertEnrollment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProfessors">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/GetProfessors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildings">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/GetBuildings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRooms">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/GetRooms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentByID">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/GetStudentByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseByID">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/GetCourseByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteStudent">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/DeleteStudent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCourse">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/DeleteCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteEnrollment">
+      <soap:operation soapAction="http://tempuri.org/IRegistrationService/DeleteEnrollment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RegistrationService">
+    <wsdl:port name="BasicHttpBinding_IRegistrationService" binding="tns:BasicHttpBinding_IRegistrationService">
+      <soap:address location="http://localhost/RegistrationApp.DataClient/RegistrationService..svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
